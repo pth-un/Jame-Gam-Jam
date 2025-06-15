@@ -4,7 +4,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    public static PlayerInputHandler Instance;
+    static PlayerInputHandler instance;
+    public static PlayerInputHandler Instance { get { return instance; }}
 
     private PlayerInputActions inputActions;
     private bool isFiring;
@@ -13,7 +14,15 @@ public class PlayerInputHandler : MonoBehaviour
     {
         inputActions = new PlayerInputActions();
         inputActions.Player.Enable();
-        Instance = this;
+
+        if (instance != null && instance == this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
     }
 
     private void Start()
