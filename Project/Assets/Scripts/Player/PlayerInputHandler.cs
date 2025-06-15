@@ -1,0 +1,45 @@
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class PlayerInputHandler : MonoBehaviour
+{
+    public static PlayerInputHandler Instance;
+
+    private PlayerInputActions inputActions;
+    private bool isFiring;
+
+    private void Awake()
+    {
+        inputActions = new PlayerInputActions();
+        inputActions.Player.Enable();
+        Instance = this;
+    }
+
+    private void Start()
+    {
+        inputActions.Player.Fire.performed += OnPlayerFire;
+        inputActions.Player.Fire.canceled += OnPlayerFire_Stop;
+    }
+
+    private void OnPlayerFire_Stop(InputAction.CallbackContext context)
+    {
+        isFiring = false;
+    }
+
+    private void OnPlayerFire(InputAction.CallbackContext context)
+    {
+        isFiring = true;
+    }
+
+    public float GetMovementDelta()
+    {
+        float movementDelta = inputActions.Player.Movement.ReadValue<float>();
+        return movementDelta;
+    }
+
+    public bool CheckFiring()
+    {
+        return isFiring;
+    }
+}
