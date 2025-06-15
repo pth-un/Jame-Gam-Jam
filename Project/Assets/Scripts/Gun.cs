@@ -17,8 +17,26 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if (playerInputHandler.CheckFiring()) HandleFire();
+        HandleFire();
+    }
 
+    private void HandleFire()
+    {
+        CheckShoot();
+        if (canShoot & playerInputHandler.CheckFiring())
+        {
+            foreach (Transform gunShootPos in gunShootPositions)
+            {
+                GameObject bulletProjectile_Inst = Instantiate(bulletProjectileSO.visual, position: gunShootPos.position, rotation: gunShootPos.rotation);
+                bulletProjectile_Inst.GetComponent<Rigidbody>().AddForce(transform.forward * bulletProjectileSO.bulletProjectileForce, ForceMode.Impulse);
+            }
+            canShoot = false;
+        }
+    }
+
+
+    private void CheckShoot()
+    {
         if (!canShoot)
         {
             shootTimer += Time.deltaTime;
@@ -28,20 +46,6 @@ public class Gun : MonoBehaviour
                 canShoot = true;
                 shootTimer = 0f;
             }
-        }
-
-    }
-
-    private void HandleFire()
-    {
-        if (canShoot)
-        {
-            foreach (Transform gunShootPos in gunShootPositions)
-            {
-                GameObject bulletProjectile_Inst = Instantiate(bulletProjectileSO.visual, position: gunShootPos.position, rotation: gunShootPos.rotation);
-                bulletProjectile_Inst.GetComponent<Rigidbody>().AddForce(transform.forward * bulletProjectileSO.bulletProjectileForce, ForceMode.Impulse);
-            }
-            canShoot = false;
         }
     }
 }
