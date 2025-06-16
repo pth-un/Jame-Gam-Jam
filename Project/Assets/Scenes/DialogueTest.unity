@@ -830,7 +830,6 @@ MonoBehaviour:
   dialogueBox: {fileID: 1708531935}
   rightImage: {fileID: 1853142032}
   leftImage: {fileID: 175775914}
-  test: {fileID: 11400000, guid: 4596dd25fed6fcc4ab787f00dd4a67e9, type: 2}
 --- !u!4 &1245533593
 Transform:
   m_ObjectHideFlags: 0

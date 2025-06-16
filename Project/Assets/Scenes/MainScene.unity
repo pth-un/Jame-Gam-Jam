@@ -415,6 +415,7 @@ MonoBehaviour:
   gunShootPositions:
   - {fileID: 140141150}
   - {fileID: 684724167}
+  bulletsSpool: {fileID: 1017303913}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,7 +856,7 @@ Transform:
   m_GameObject: {fileID: 1017303912}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.502918, y: 9.481418, z: 7.327275}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
