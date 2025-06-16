@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using TMPro.EditorUtilities;
 using UnityEngine;
-
-public class Enemy : MonoBehaviour, IDamageable
+[RequireComponent(typeof(Collider))]
+public abstract class Enemy : MonoBehaviour, IDamageable
 {
     [SerializeField]
     protected float maxHealth;
@@ -12,9 +12,10 @@ public class Enemy : MonoBehaviour, IDamageable
     protected List<Gun> gunList;
     [SerializeField]
     protected float moveSpeed;
-
-    protected void Shoot() { }
-    protected void Move() { }
+    [SerializeField]
+    protected float contactDamage;
+    protected abstract void Shoot();
+    protected abstract void Move();
 
     public void Die()
     {
@@ -33,5 +34,15 @@ public class Enemy : MonoBehaviour, IDamageable
         health -= damage;
         if (health < 0)
             Die();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+
+        if (player != null)
+        {
+            player.TakeDamage(contactDamage);
+        }
     }
 }
