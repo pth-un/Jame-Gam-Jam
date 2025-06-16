@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 330571ecdf3751b4eb622750f5dbb3e5, type: 3}
+  m_Name: TestDialogue
+  m_EditorClassIdentifier: 
+  lines:
+  - text: Hi!
+    character: {fileID: 11400000, guid: 8323ec0df342db147bffd805953ecf96, type: 2}
+    expression: 0
+    isLeft: 1
+  - text: Hi too!
+    character: {fileID: 11400000, guid: 3c8a378a81db43948b145a8a54e72207, type: 2}
+    expression: 1
+    isLeft: 0
+  - text: Bye!
+    character: {fileID: 11400000, guid: 3c8a378a81db43948b145a8a54e72207, type: 2}
+    expression: 0
+    isLeft: 0
+  - text: Bye Bye!!
+    character: {fileID: 11400000, guid: 8323ec0df342db147bffd805953ecf96, type: 2}
+    expression: 1
+    isLeft: 1
