@@ -6,6 +6,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private BulletProjectileSO bulletProjectileSO;
     [SerializeField] private Transform[] gunShootPositions;
     [SerializeField] private BulletsSpool bulletsSpool;
+    [SerializeField] private bool isPlayerGun;
 
     private PlayerInputHandler playerInputHandler;
     private float shootTimer;
@@ -13,24 +14,38 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        playerInputHandler = PlayerInputHandler.Instance;
+        if(isPlayerGun) playerInputHandler = PlayerInputHandler.Instance;
     }
 
     private void Update()
     {
-        HandleFire();
+        if(isPlayerGun) HandleFire();
     }
 
-    private void HandleFire()
+    public void HandleFire()
     {
         CheckShoot();
-        if (canShoot & playerInputHandler.CheckFiring())
+        if (isPlayerGun)
         {
-            foreach (Transform gunShootPos in gunShootPositions)
+            if (canShoot && playerInputHandler.CheckFiring())
             {
-                bulletsSpool.OnShoot(gunShootPos);
+                foreach (Transform gunShootPos in gunShootPositions)
+                {
+                    bulletsSpool.OnShoot(gunShootPos);
+                }
+                canShoot = false;
             }
-            canShoot = false;
+        }
+        else
+        {
+            if (canShoot)
+            {
+                foreach (Transform gunShootPos in gunShootPositions)
+                {
+                    bulletsSpool.OnShoot(gunShootPos);
+                }
+                canShoot = false;
+            }
         }
     }
 
