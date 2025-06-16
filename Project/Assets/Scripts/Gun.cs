@@ -27,8 +27,7 @@ public class Gun : MonoBehaviour
         {
             foreach (Transform gunShootPos in gunShootPositions)
             {
-                GameObject bulletProjectile_Inst = Instantiate(bulletProjectileSO.visual, position: gunShootPos.position, rotation: gunShootPos.rotation);
-                bulletProjectile_Inst.GetComponent<Rigidbody>().AddForce(transform.forward * bulletProjectileSO.bulletProjectileForce, ForceMode.Impulse);
+                BulletsSpool.Instance.OnShoot(gunShootPos);
             }
             canShoot = false;
         }
