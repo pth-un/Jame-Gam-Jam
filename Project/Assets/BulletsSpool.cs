@@ -8,6 +8,7 @@ public class BulletsSpool : MonoBehaviour
     [SerializeField] private BulletProjectileSO bulletProjectileSO;
 
     private List<GameObject> bulletProjectiles;
+    private int disabledBullets;
 
     private void Awake()
     {
@@ -51,14 +52,7 @@ public class BulletsSpool : MonoBehaviour
         bulletToReset.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
         bulletToReset.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
 
-        int disabledBullets = 0;
-        foreach (GameObject bulletProjectile in bulletProjectiles)
-        {
-            if (!bulletProjectile.activeSelf)
-            {
-                disabledBullets++;
-            }
-        }
+        disabledBullets++;
 
         if (disabledBullets >= spawnBulletCount)
         {
@@ -74,6 +68,8 @@ public class BulletsSpool : MonoBehaviour
             GameObject bulletProjectile_Inst = Instantiate(bulletProjectileSO.visual, this.transform);
             bulletProjectile_Inst.SetActive(false);
             bulletProjectiles.Add(bulletProjectile_Inst);
+            
+            disabledBullets++;
         }
     }
 }
