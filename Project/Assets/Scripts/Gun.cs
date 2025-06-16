@@ -5,6 +5,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private BulletProjectileSO bulletProjectileSO;
     [SerializeField] private Transform[] gunShootPositions;
+    [SerializeField] private BulletsSpool bulletsSpool;
 
     private PlayerInputHandler playerInputHandler;
     private float shootTimer;
@@ -27,7 +28,7 @@ public class Gun : MonoBehaviour
         {
             foreach (Transform gunShootPos in gunShootPositions)
             {
-                BulletsSpool.Instance.OnShoot(gunShootPos);
+                bulletsSpool.OnShoot(gunShootPos);
             }
             canShoot = false;
         }

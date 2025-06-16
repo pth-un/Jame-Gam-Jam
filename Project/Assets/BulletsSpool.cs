@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class BulletsSpool : MonoBehaviour
 {
-    public static BulletsSpool Instance { get; private set; }
-
-
     [SerializeField] private int spawnBulletCount;
     [SerializeField] private BulletProjectileSO bulletProjectileSO;
 
@@ -14,11 +11,7 @@ public class BulletsSpool : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            bulletProjectiles = new List<GameObject>();
-        }
+        bulletProjectiles = new List<GameObject>();
     }
 
     private void Start()

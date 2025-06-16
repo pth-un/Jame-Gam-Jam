@@ -16,6 +16,6 @@ public class Projectile : MonoBehaviour
     private IEnumerator WaitCoroutine(int _destroyWaitTime)
     {
         yield return new WaitForSeconds(_destroyWaitTime);
-        BulletsSpool.Instance.ResetBullet(this.gameObject);
+        GetComponentInParent<BulletsSpool>().ResetBullet(this.gameObject);
     }
 }
