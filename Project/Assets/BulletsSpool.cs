@@ -56,11 +56,27 @@ public class BulletsSpool : MonoBehaviour
     {
         bulletToReset.SetActive(false);
         bulletToReset.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+        bulletToReset.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+
+        int disabledBullets = 0;
+        foreach (GameObject bulletProjectile in bulletProjectiles)
+        {
+            if (!bulletProjectile.activeSelf)
+            {
+                disabledBullets++;
+            }
+        }
+
+        if (disabledBullets >= spawnBulletCount)
+        {
+            bulletProjectiles.Remove(bulletToReset);
+            Destroy(bulletToReset);
+        }
     }
 
     private void SpawnBullets()
     {
-         for (int i = 0; i <= spawnBulletCount; i++)
+        for (int i = 0; i <= spawnBulletCount; i++)
         {
             GameObject bulletProjectile_Inst = Instantiate(bulletProjectileSO.visual, this.transform);
             bulletProjectile_Inst.SetActive(false);
