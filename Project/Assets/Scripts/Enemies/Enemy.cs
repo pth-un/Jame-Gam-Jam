@@ -5,15 +5,21 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
     [Header("GeneralEnemySettings")]
-    [SerializeField] protected float maxHealth;
-    [SerializeField] protected float health;
-    [SerializeField] protected List<Gun> gunList;
-    [SerializeField]  protected float moveSpeed;
-    [SerializeField] protected float contactDamage;
+    [SerializeField] protected float maxHealth = 50f;
+    [SerializeField]  protected float moveSpeed = 12f;
+    [SerializeField] protected float contactDamage = 30f;
     [SerializeField] protected bool shootTowardsPlayer;
+    [SerializeField] protected bool moveTowardsPlayer;
+
+    protected float health;
 
     protected abstract void Shoot();
     protected abstract void Move();
+
+    private void Start()
+    {
+        health = maxHealth;
+    }
 
     public void Die()
     {
@@ -30,7 +36,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if (health < 0)
+        if (health <= 0)
             Die();
     }
 

@@ -3,7 +3,7 @@ using UnityEngine;
 public class SineWaveEnemy : Enemy
 {
     [Header("SineWaveSettings")]
-    [SerializeField] private float amplitude = 2f;
+    [SerializeField] private float amplitude = 5f;
     [SerializeField] private float frequency = 0.4f;
     [SerializeField] private bool inverted, shootConstantly;
 

@@ -73,6 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d3c9d1010fc4869a22958e453ddbde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  bulletProjectileSO: {fileID: 11400000, guid: 62fc49b8026df430abad5c2f1d8bf8f2, type: 2}
 --- !u!1001 &6976029611582163507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,7 +105,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9705cdda369ae47d8b2210aa7c785413, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.353
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9705cdda369ae47d8b2210aa7c785413, type: 3}
       propertyPath: m_LocalRotation.w

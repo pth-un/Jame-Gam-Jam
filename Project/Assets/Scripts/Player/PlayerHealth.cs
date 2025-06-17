@@ -4,9 +4,14 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 {
     [SerializeField]
     private float maxHealth;
-    [SerializeField]
+    
     private float health;
 
+    private void Start()
+    {
+        health = maxHealth;
+    }
+    
     public void Die()
     {
         Debug.Log("Dead");

@@ -5,7 +5,8 @@ using UnityEngine;
 public class BulletsSpool : MonoBehaviour
 {
     [SerializeField] private int spawnBulletCount;
-    [SerializeField] private BulletProjectileSO bulletProjectileSO;
+    [SerializeField] private LayerMask playerLayer, enemyLayer;
+    [SerializeField] private GameObject projectilePrefab;
 
     private List<GameObject> bulletProjectiles;
     private int disabledBullets;
@@ -22,7 +23,6 @@ public class BulletsSpool : MonoBehaviour
 
     public void OnShoot(Transform gunShootPos, bool towardsPlayer=false)
     {
-        Debug.Log(GetInactiveBulletProjectile());
         GameObject bulletProjectile_InstToFire = GetInactiveBulletProjectile();
 
 
@@ -32,7 +32,6 @@ public class BulletsSpool : MonoBehaviour
         {
             bulletProjectile_InstToFire.transform.LookAt(PlayerInputHandler.Instance.transform);
         }
-        bulletProjectile_InstToFire.GetComponent<Rigidbody>().AddForce(bulletProjectile_InstToFire.transform.forward * bulletProjectileSO.bulletProjectileForce, ForceMode.Impulse);
         bulletProjectile_InstToFire.GetComponent<Projectile>().OnSpawn();
     }
 
@@ -68,7 +67,7 @@ public class BulletsSpool : MonoBehaviour
     {
         for (int i = 0; i <= spawnBulletCount; i++)
         {
-            GameObject bulletProjectile_Inst = Instantiate(bulletProjectileSO.visual, this.transform);
+            GameObject bulletProjectile_Inst = Instantiate(projectilePrefab, this.transform);
             bulletProjectile_Inst.SetActive(false);
             bulletProjectiles.Add(bulletProjectile_Inst);
             

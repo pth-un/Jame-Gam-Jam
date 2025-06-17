@@ -16,7 +16,8 @@ public class BasicEnemy : Enemy
 
     protected override void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, moveSpeed * Time.deltaTime);
+        if (moveTowardsPlayer) transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, moveSpeed * Time.deltaTime);
+        else transform.position += transform.forward * moveSpeed * Time.deltaTime;
         Shoot();
     }
 }
