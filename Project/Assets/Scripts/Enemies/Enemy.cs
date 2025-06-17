@@ -4,12 +4,14 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class Enemy : MonoBehaviour, IDamageable
 {
+    [Header("GeneralEnemySettings")]
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float health;
     [SerializeField] protected List<Gun> gunList;
     [SerializeField]  protected float moveSpeed;
     [SerializeField] protected float contactDamage;
-    
+    [SerializeField] protected bool shootTowardsPlayer;
+
     protected abstract void Shoot();
     protected abstract void Move();
 

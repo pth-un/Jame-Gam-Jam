@@ -14,15 +14,15 @@ public class Gun : MonoBehaviour
 
     private void Start()
     {
-        if(isPlayerGun) playerInputHandler = PlayerInputHandler.Instance;
+        if (isPlayerGun) playerInputHandler = PlayerInputHandler.Instance;
     }
 
     private void Update()
     {
-        if(isPlayerGun) HandleFire();
+        if (isPlayerGun) HandleFire();
     }
 
-    public void HandleFire()
+    public void HandleFire(bool towardsPlayer=false)
     {
         CheckShoot();
         if (isPlayerGun)
@@ -42,7 +42,7 @@ public class Gun : MonoBehaviour
             {
                 foreach (Transform gunShootPos in gunShootPositions)
                 {
-                    bulletsSpool.OnShoot(gunShootPos);
+                    bulletsSpool.OnShoot(gunShootPos, towardsPlayer);
                 }
                 canShoot = false;
             }

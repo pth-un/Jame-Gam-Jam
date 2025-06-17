@@ -20,15 +20,18 @@ public class BulletsSpool : MonoBehaviour
         SpawnBullets();
     }
 
-    public void OnShoot(Transform gunShootPos)
+    public void OnShoot(Transform gunShootPos, bool towardsPlayer=false)
     {
-        Debug.Log("Shoot");
         Debug.Log(GetInactiveBulletProjectile());
         GameObject bulletProjectile_InstToFire = GetInactiveBulletProjectile();
 
 
         bulletProjectile_InstToFire.SetActive(true);
         bulletProjectile_InstToFire.transform.SetPositionAndRotation(position: gunShootPos.position, rotation: gunShootPos.rotation);
+        if (towardsPlayer)
+        {
+            bulletProjectile_InstToFire.transform.LookAt(PlayerInputHandler.Instance.transform);
+        }
         bulletProjectile_InstToFire.GetComponent<Rigidbody>().AddForce(bulletProjectile_InstToFire.transform.forward * bulletProjectileSO.bulletProjectileForce, ForceMode.Impulse);
         bulletProjectile_InstToFire.GetComponent<Projectile>().OnSpawn();
     }
