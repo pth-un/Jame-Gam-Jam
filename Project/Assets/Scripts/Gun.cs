@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    [SerializeField] private BulletProjectileSO bulletProjectileSO;
+    [SerializeField] private float bulletsFireRate;
     [SerializeField] private Transform[] gunShootPositions;
     [SerializeField] private BulletsSpool bulletsSpool;
     [SerializeField] private bool isPlayerGun;
@@ -55,7 +55,7 @@ public class Gun : MonoBehaviour
         if (!canShoot)
         {
             shootTimer += Time.deltaTime;
-            float fireRate = 60 / bulletProjectileSO.fireRate;
+            float fireRate = 60 / bulletsFireRate;
             if (shootTimer >= fireRate)
             {
                 canShoot = true;

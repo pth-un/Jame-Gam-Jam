@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45b7f8a7ac51541da8bf5ec962177c08, type: 3}
   m_Name: BasicEnemyBullet
   m_EditorClassIdentifier: 
-  bulletProjectileForce: 40
+  bulletProjectileForce: 60
   damage: 10
   fireRate: 60
   visual: {fileID: 756925957210118379, guid: 23aa9457bd02b4ea2b0ad64cf5f4763e, type: 3}

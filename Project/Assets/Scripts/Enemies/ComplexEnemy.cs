@@ -11,7 +11,6 @@ public class ComplexEnemy : Enemy
         MoveTowardsPlayer
     }
     private State currentState;
-    private float currentTimer = 0f;
 
     private void Start()
     {
@@ -28,7 +27,6 @@ public class ComplexEnemy : Enemy
                 if (Vector3.Distance(transform.position, PlayerInputHandler.Instance.transform.position) <= minDistToPlayer)
                 {
                     currentState = State.MoveTowardsPlayer;
-                    currentTimer = 0f;
                 }
                 return;
             case State.MoveTowardsPlayer:

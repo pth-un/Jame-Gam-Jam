@@ -4,7 +4,6 @@ public class PlayerAnimator : MonoBehaviour
 {
     private Animator animator;
     private string HORIZONTALMOV = "horizontalMov";
-    private string MOVEMENTMAG = "movementMag";
 
     private void Start()
     {
