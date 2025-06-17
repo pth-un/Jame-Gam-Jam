@@ -4,17 +4,23 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float playerSpeed;
+    [SerializeField] private float maxVelocity;
 
     private PlayerInputHandler playerInputHandler;
+    private Rigidbody rb;
 
     private void Start()
     {
         playerInputHandler = GetComponent<PlayerInputHandler>();
+        rb = GetComponent<Rigidbody>();
     }
     private void Update()
     {
+        float multiplier = 100f;
         float movementDelta = playerInputHandler.GetMovementDelta();
-        Vector3 movement = Vector3.right * movementDelta * playerSpeed * Time.deltaTime;
-        transform.position += movement;
+        Vector3 movementForce = Vector3.right * movementDelta * playerSpeed * Time.deltaTime * multiplier;
+
+        if (rb.linearVelocity.magnitude >= maxVelocity) movementForce = Vector3.zero;
+        rb.AddForce(movementForce, ForceMode.Force);
     }
 }
