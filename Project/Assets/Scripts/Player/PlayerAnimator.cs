@@ -14,7 +14,6 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
         float moveX = PlayerInputHandler.Instance.GetMovementDelta();
-        animator.SetFloat(HORIZONTALMOV, moveX);
-        animator.SetFloat(MOVEMENTMAG, Mathf.Abs(moveX));
+        animator.SetFloat(HORIZONTALMOV, moveX, 0.1f, Time.deltaTime);
     }
 }
