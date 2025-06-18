@@ -17,10 +17,13 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         float multiplier = 100f;
-        float movementDelta = playerInputHandler.GetMovementDelta();
-        Vector3 movementForce = Vector3.right * movementDelta * playerSpeed * Time.deltaTime * multiplier;
-
+        Vector2 movementDelta = playerInputHandler.GetMovementDelta();
+        Vector3 movementForce = new Vector3 (movementDelta.x, 0, movementDelta.y);
+        movementForce = movementForce * playerSpeed * Time.deltaTime * multiplier;
+       
         if (rb.linearVelocity.magnitude >= maxVelocity) movementForce = Vector3.zero;
-        rb.AddForce(movementForce, ForceMode.Force);
+        //rb.AddForce(movementForce, ForceMode.Force);
+
+        rb.linearVelocity = movementForce;
     }
 }

@@ -12,7 +12,9 @@ public class PlayerAnimator : MonoBehaviour
 
     private void Update()
     {
-        float moveX = PlayerInputHandler.Instance.GetMovementDelta();
+        Vector2 input = PlayerInputHandler.Instance.GetMovementDelta();
+
+        float moveX = input.x;
         animator.SetFloat(HORIZONTALMOV, moveX, 0.1f, Time.deltaTime);
     }
 }

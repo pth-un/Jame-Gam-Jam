@@ -41,9 +41,9 @@ public class PlayerInputHandler : MonoBehaviour
         isFiring = true;
     }
 
-    public float GetMovementDelta()
+    public Vector2 GetMovementDelta()
     {
-        float movementDelta = inputActions.Player.Movement.ReadValue<float>();
+        Vector2 movementDelta = inputActions.Player.Movement.ReadValue<Vector2>();
         return movementDelta;
     }
 
