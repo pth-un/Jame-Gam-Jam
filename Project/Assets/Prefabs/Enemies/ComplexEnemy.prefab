@@ -9741,6 +9741,7 @@ MonoBehaviour:
   contactDamage: 30
   shootTowardsPlayer: 1
   moveTowardsPlayer: 0
+  onHitEffect: {fileID: 1873189808337132921, guid: 4eca26b6bb14f481ba1fe59c710894c0, type: 3}
   minDistToPlayer: 120
 --- !u!114 &8347181577854510372
 MonoBehaviour:

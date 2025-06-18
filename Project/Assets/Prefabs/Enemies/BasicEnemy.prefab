@@ -4941,6 +4941,7 @@ MonoBehaviour:
   contactDamage: 30
   shootTowardsPlayer: 0
   moveTowardsPlayer: 0
+  onHitEffect: {fileID: 1873189808337132921, guid: 4eca26b6bb14f481ba1fe59c710894c0, type: 3}
 --- !u!114 &8418108692798396542
 MonoBehaviour:
   m_ObjectHideFlags: 0

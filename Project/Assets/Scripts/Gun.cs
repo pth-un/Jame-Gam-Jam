@@ -5,7 +5,7 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private float bulletsFireRate;
     [SerializeField] private Transform[] gunShootPositions;
-    //[SerializeField] private AudioClip 
+    [SerializeField] private AudioClip[] gunShootAudionClips;
     [SerializeField] private bool isPlayerGun;
 
 
@@ -36,6 +36,7 @@ public class Gun : MonoBehaviour
                 foreach (Transform gunShootPos in gunShootPositions)
                 {
                     bulletsSpool.OnShoot(gunShootPos, layerMask);
+                    PlayShootSound(gunShootPos);
                 }
                 canShoot = false;
             }
@@ -47,10 +48,17 @@ public class Gun : MonoBehaviour
                 foreach (Transform gunShootPos in gunShootPositions)
                 {
                     bulletsSpool.OnShoot(gunShootPos, layerMask, towardsPlayer);
+                    PlayShootSound(gunShootPos);
                 }
                 canShoot = false;
             }
         }
+    }
+
+    private void PlayShootSound(Transform position)
+    {
+        AudioClip clipToPlay = gunShootAudionClips[UnityEngine.Random.Range(0, gunShootAudionClips.Length - 1)];
+        AudioSource.PlayClipAtPoint(clipToPlay, position.position);
     }
 
 

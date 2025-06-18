@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
+    [SerializeField] private GameObject onHitEffect;
     [SerializeField]
     private float maxHealth;
     
@@ -29,5 +30,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         health -= damage;
         if (health < 0)
             Die();
+    }
+
+    public GameObject ReturnHitEffect()
+    {
+        return onHitEffect;
     }
 }

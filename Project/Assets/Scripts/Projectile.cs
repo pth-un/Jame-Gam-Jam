@@ -13,7 +13,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private BulletType bulletType;
 
     private IEnumerator coroutine;
-    private float sinCenterX;
 
 
     public void OnSpawn()
@@ -28,7 +27,6 @@ public class Projectile : MonoBehaviour
                 StartCoroutine(coroutine);
                 return;
             case BulletType.rocket:
-                sinCenterX = transform.position.x;
                 return;
         }
     }
@@ -44,13 +42,6 @@ public class Projectile : MonoBehaviour
     private void HandleRocketMovement()
     {
         transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, bulletProjectileForce * Time.deltaTime);
-
-        //Vector3 move = straightMovement;
-        //
-        //float sin = Mathf.Sin(move.z * frequency) * amplitude;
-        //move.x = sinCenterX + sin;
-        //
-        //transform.position = move;
     }
 
     private IEnumerator WaitCoroutine(int _destroyWaitTime)
@@ -64,12 +55,13 @@ public class Projectile : MonoBehaviour
         if (collision.transform.TryGetComponent<IDamageable>(out IDamageable damageable))
         {
             damageable.TakeDamage(damage);
+
             GetComponentInParent<BulletsSpool>().ResetBullet(this.gameObject);
         }
     }
 
     private void SpawnParticles()
     {
-        ParticleSystemManager.Instance.SpawnParticles(shootParticles, transform);
+        ParticleSystemManager.Instance.SpawnParticles(shootParticles, transform.position, transform.rotation);
     }
 }

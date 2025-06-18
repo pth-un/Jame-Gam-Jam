@@ -10,16 +10,13 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float contactDamage = 30f;
     [SerializeField] protected bool shootTowardsPlayer;
     [SerializeField] protected bool moveTowardsPlayer;
+    [SerializeField] private GameObject onHitEffect;
 
     protected float health;
+    private bool initialized = false;
 
     protected abstract void Shoot();
     protected abstract void Move();
-
-    private void Start()
-    {
-        health = maxHealth;
-    }
 
     public void Die()
     {
@@ -35,7 +32,13 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage(float damage)
     {
+        if (!initialized)
+        {
+            health = maxHealth;
+            initialized = true;
+        }
         health -= damage;
+        Debug.Log(health);
         if (health <= 0)
             Die();
     }
@@ -48,5 +51,21 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         {
             player.TakeDamage(contactDamage);
         }
+
+        Debug.Log(collision.transform.GetComponent<Projectile>());
+        if (collision.transform.GetComponent<Projectile>())
+        {
+            ContactPoint contactPoint = collision.contacts[0];
+            Vector3 location = contactPoint.point;
+            Vector3 normal = contactPoint.normal;
+            Quaternion rotation = Quaternion.LookRotation(-normal);
+
+            ParticleSystemManager.Instance.SpawnParticles(onHitEffect, location, rotation);
+        }
+    }
+
+    public GameObject ReturnHitEffect()
+    {
+        return onHitEffect;
     }
 }
