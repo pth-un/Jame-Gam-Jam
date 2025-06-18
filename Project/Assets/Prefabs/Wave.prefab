@@ -79,12 +79,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnBulletCount: 10
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
   projectilePrefab: {fileID: 756925957210118379, guid: 23aa9457bd02b4ea2b0ad64cf5f4763e, type: 3}
 --- !u!1 &3376519305423556216
 GameObject:
@@ -131,12 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnBulletCount: 10
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
   projectilePrefab: {fileID: 756925957210118379, guid: 23aa9457bd02b4ea2b0ad64cf5f4763e, type: 3}
 --- !u!1 &5736275725138322557
 GameObject:
@@ -183,12 +171,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnBulletCount: 10
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 0
   projectilePrefab: {fileID: 756925957210118379, guid: 23aa9457bd02b4ea2b0ad64cf5f4763e, type: 3}
 --- !u!1001 &1081912001467811095
 PrefabInstance:
@@ -204,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2550117987714544414, guid: 7d5b7b74bb7b048249fc4d8e26056805, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.06864
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 2550117987714544414, guid: 7d5b7b74bb7b048249fc4d8e26056805, type: 3}
       propertyPath: m_LocalPosition.z
@@ -277,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7526337611460508873, guid: 5aba5571ab4d246a7a2f6429e1f44b40, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.06864
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 7526337611460508873, guid: 5aba5571ab4d246a7a2f6429e1f44b40, type: 3}
       propertyPath: m_LocalPosition.z
@@ -342,7 +324,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4115792111458796506, guid: 6e7a4ecd5465a4d279aa7d02209ed22a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.06864
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 4115792111458796506, guid: 6e7a4ecd5465a4d279aa7d02209ed22a, type: 3}
       propertyPath: m_LocalPosition.z

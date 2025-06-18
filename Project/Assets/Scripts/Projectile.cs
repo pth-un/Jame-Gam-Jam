@@ -6,9 +6,10 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private float bulletProjectileForce;
+    [SerializeField] private GameObject shootParticles;
 
     [Serializable]
-    private enum BulletType{ bullet, rocket, laser}
+    private enum BulletType { bullet, rocket, laser }
     [SerializeField] private BulletType bulletType;
 
     private IEnumerator coroutine;
@@ -20,8 +21,9 @@ public class Projectile : MonoBehaviour
         switch (bulletType)
         {
             case BulletType.bullet:
+                SpawnParticles();
                 GetComponent<Rigidbody>().AddForce(transform.forward * bulletProjectileForce, ForceMode.Impulse);
-                int destroyWaitTime = 5;
+                int destroyWaitTime = 10;
                 coroutine = WaitCoroutine(destroyWaitTime);
                 StartCoroutine(coroutine);
                 return;
@@ -44,10 +46,10 @@ public class Projectile : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, bulletProjectileForce * Time.deltaTime);
 
         //Vector3 move = straightMovement;
-//
+        //
         //float sin = Mathf.Sin(move.z * frequency) * amplitude;
         //move.x = sinCenterX + sin;
-//
+        //
         //transform.position = move;
     }
 
@@ -64,5 +66,10 @@ public class Projectile : MonoBehaviour
             damageable.TakeDamage(damage);
             GetComponentInParent<BulletsSpool>().ResetBullet(this.gameObject);
         }
+    }
+
+    private void SpawnParticles()
+    {
+        ParticleSystemManager.Instance.SpawnParticles(shootParticles, transform);
     }
 }

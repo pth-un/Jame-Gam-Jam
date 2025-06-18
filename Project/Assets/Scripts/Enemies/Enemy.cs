@@ -23,7 +23,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public void Die()
     {
-        Destroy(gameObject);
+        Destroy(this.gameObject);
     }
 
     public void Heal(float heal)

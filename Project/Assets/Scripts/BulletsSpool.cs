@@ -5,8 +5,9 @@ using UnityEngine;
 public class BulletsSpool : MonoBehaviour
 {
     [SerializeField] private int spawnBulletCount;
-    [SerializeField] private LayerMask playerLayer, enemyLayer;
     [SerializeField] private GameObject projectilePrefab;
+
+    public static BulletsSpool Instance;
 
     private List<GameObject> bulletProjectiles;
     private int disabledBullets;
@@ -14,6 +15,7 @@ public class BulletsSpool : MonoBehaviour
     private void Awake()
     {
         bulletProjectiles = new List<GameObject>();
+        Instance = this;
     }
 
     private void Start()
@@ -21,7 +23,7 @@ public class BulletsSpool : MonoBehaviour
         SpawnBullets();
     }
 
-    public void OnShoot(Transform gunShootPos, LayerMask layerMask, bool towardsPlayer=false)
+    public void OnShoot(Transform gunShootPos, LayerMask layerMask, bool towardsPlayer = false)
     {
         GameObject bulletProjectile_InstToFire = GetInactiveBulletProjectile();
         bulletProjectile_InstToFire.GetComponent<Rigidbody>().excludeLayers = layerMask;
@@ -39,13 +41,20 @@ public class BulletsSpool : MonoBehaviour
     {
         foreach (GameObject bulletProjectile in bulletProjectiles)
         {
-            if (!bulletProjectile.activeSelf)
+            if (bulletProjectile && !bulletProjectile.activeSelf)
             {
                 return bulletProjectile;
             }
         }
         SpawnBullets();
-        return bulletProjectiles[bulletProjectiles.Count - 1];
+        foreach (GameObject bulletProjectile in bulletProjectiles)
+        {
+            if (!bulletProjectile.activeSelf)
+            {
+                return bulletProjectile;
+            }
+        }
+        return null;
     }
 
     public void ResetBullet(GameObject bulletToReset)
@@ -58,6 +67,7 @@ public class BulletsSpool : MonoBehaviour
 
         if (disabledBullets >= spawnBulletCount)
         {
+            Debug.Log("Deleting Bullets");
             bulletProjectiles.Remove(bulletToReset);
             Destroy(bulletToReset);
         }

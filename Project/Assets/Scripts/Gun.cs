@@ -5,9 +5,11 @@ public class Gun : MonoBehaviour
 {
     [SerializeField] private float bulletsFireRate;
     [SerializeField] private Transform[] gunShootPositions;
-    [SerializeField] private BulletsSpool bulletsSpool;
+    //[SerializeField] private AudioClip 
     [SerializeField] private bool isPlayerGun;
 
+
+    private BulletsSpool bulletsSpool;
     private PlayerInputHandler playerInputHandler;
     private float shootTimer;
     private bool canShoot;
@@ -15,6 +17,7 @@ public class Gun : MonoBehaviour
     private void Start()
     {
         if (isPlayerGun) playerInputHandler = PlayerInputHandler.Instance;
+        bulletsSpool = BulletsSpool.Instance;
     }
 
     private void Update()
@@ -24,6 +27,7 @@ public class Gun : MonoBehaviour
 
     public void HandleFire(LayerMask layerMask, bool towardsPlayer=false)
     {
+        if (!bulletsSpool) return;
         CheckShoot();
         if (isPlayerGun)
         {
