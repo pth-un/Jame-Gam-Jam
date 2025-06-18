@@ -21,7 +21,7 @@ public class SineWaveEnemy : Enemy
 
     protected override void Shoot()
     {
-        GetComponent<Gun>().HandleFire(shootTowardsPlayer);
+        GetComponent<Gun>().HandleFire(1 << gameObject.layer, shootTowardsPlayer);
     }
 
     protected override void Move()

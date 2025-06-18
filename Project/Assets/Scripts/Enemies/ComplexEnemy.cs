@@ -23,7 +23,6 @@ public class ComplexEnemy : Enemy
         {
             case State.MoveStraight:
                 transform.position += transform.forward * moveSpeed * Time.deltaTime;
-                Debug.Log(Vector3.Distance(transform.position, PlayerInputHandler.Instance.transform.position));
                 if (Vector3.Distance(transform.position, PlayerInputHandler.Instance.transform.position) <= minDistToPlayer)
                 {
                     currentState = State.MoveTowardsPlayer;
@@ -43,6 +42,6 @@ public class ComplexEnemy : Enemy
 
     protected override void Shoot()
     {
-        GetComponent<Gun>().HandleFire(shootTowardsPlayer);
+        GetComponent<Gun>().HandleFire(1 << gameObject.layer, shootTowardsPlayer);
     }
 }

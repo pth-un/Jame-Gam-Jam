@@ -21,10 +21,10 @@ public class BulletsSpool : MonoBehaviour
         SpawnBullets();
     }
 
-    public void OnShoot(Transform gunShootPos, bool towardsPlayer=false)
+    public void OnShoot(Transform gunShootPos, LayerMask layerMask, bool towardsPlayer=false)
     {
         GameObject bulletProjectile_InstToFire = GetInactiveBulletProjectile();
-
+        bulletProjectile_InstToFire.GetComponent<Rigidbody>().excludeLayers = layerMask;
 
         bulletProjectile_InstToFire.SetActive(true);
         bulletProjectile_InstToFire.transform.SetPositionAndRotation(position: gunShootPos.position, rotation: gunShootPos.rotation);

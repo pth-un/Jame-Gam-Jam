@@ -74,7 +74,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  bulletProjectileSO: {fileID: 11400000, guid: 62fc49b8026df430abad5c2f1d8bf8f2, type: 2}
+  bulletProjectileForce: 20
+  bulletType: 0
 --- !u!1001 &6976029611582163507
 PrefabInstance:
   m_ObjectHideFlags: 0

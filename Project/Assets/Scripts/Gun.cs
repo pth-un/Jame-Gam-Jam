@@ -19,10 +19,10 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerGun) HandleFire();
+        if (isPlayerGun) HandleFire(1 << gameObject.layer);
     }
 
-    public void HandleFire(bool towardsPlayer=false)
+    public void HandleFire(LayerMask layerMask, bool towardsPlayer=false)
     {
         CheckShoot();
         if (isPlayerGun)
@@ -31,7 +31,7 @@ public class Gun : MonoBehaviour
             {
                 foreach (Transform gunShootPos in gunShootPositions)
                 {
-                    bulletsSpool.OnShoot(gunShootPos);
+                    bulletsSpool.OnShoot(gunShootPos, layerMask);
                 }
                 canShoot = false;
             }
@@ -42,7 +42,7 @@ public class Gun : MonoBehaviour
             {
                 foreach (Transform gunShootPos in gunShootPositions)
                 {
-                    bulletsSpool.OnShoot(gunShootPos, towardsPlayer);
+                    bulletsSpool.OnShoot(gunShootPos, layerMask, towardsPlayer);
                 }
                 canShoot = false;
             }

@@ -149,11 +149,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enableRotation: 1
-  rotationSpeed: 1
+  rotationSpeed: 0.5
   constrainRotation: 1
   minRotation: -180
   maxRotation: 180
-  player: {fileID: 0}
+  player: {fileID: 733500532}
   followSpeed: 0.5
   constrainPlayerFollow: 1
 --- !u!4 &105193045
@@ -180,7 +180,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 140141150}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunHoldPos (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ Transform:
   m_GameObject: {fileID: 140141149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.15, y: -0.58, z: 11}
+  m_LocalPosition: {x: -5.92, y: -0.58, z: 3.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -212,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 183690073}
   - component: {fileID: 183690074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25beecd22a5a94dabae23df7ef148816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletsFireRate: 0
+  bulletsFireRate: 200
   gunShootPositions:
   - {fileID: 140141150}
   - {fileID: 684724167}
@@ -261,7 +261,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 273199347}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,6 +850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Whale
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ea278056cf9104edb83e48d3d3d224b3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -867,7 +871,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 684724167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunHoldPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -883,7 +887,7 @@ Transform:
   m_GameObject: {fileID: 684724166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.15, y: -0.58, z: 11}
+  m_LocalPosition: {x: 5.69, y: -0.58, z: 4.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -904,7 +908,7 @@ GameObject:
   - component: {fileID: 733500536}
   - component: {fileID: 733500533}
   - component: {fileID: 733500534}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
