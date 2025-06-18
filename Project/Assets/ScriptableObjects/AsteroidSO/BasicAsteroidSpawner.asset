@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb9fa935f46e49b6bfd4fe3c2ef2e12, type: 3}
+  m_Name: BasicAsteroidSpawner
+  m_EditorClassIdentifier: 
+  asteroidPrefabs:
+  - {fileID: 1847516941133789127, guid: dd74f57265299448eb321f182b2b46df, type: 3}
+  - {fileID: 5907504764368007889, guid: 189e1176b9fa148eeadfb2ea123e2aef, type: 3}
+  - {fileID: 1828922562945989724, guid: 5763b4c1743f84076b42b268b3f3797e, type: 3}
+  - {fileID: 3732441003830556148, guid: f69968ad4460e41fb81d71b6df547442, type: 3}
+  - {fileID: 8122287396660903632, guid: ff95ef4e2543a42a2a5852b188b5e108, type: 3}
+  - {fileID: 5928888223150932387, guid: 8368add47789d41cbb94ed25d54cbd31, type: 3}
+  - {fileID: 3510908159678021987, guid: 6763ff51a9cdb46d5a3b327e5e90834f, type: 3}
+  - {fileID: 7245979525997843158, guid: 4adedd5f29ecb4186895e467f309f9e2, type: 3}
+  - {fileID: 3807215995553833514, guid: 7ea7e61cafaea4fbcb9e6ff3b6bc9387, type: 3}
+  - {fileID: 8335168279373851544, guid: 0f43972c8410044219bfa65d92919bdd, type: 3}
+  force: 40
+  timeBetweenSpawn: 8
+  forceMultiplier: 1.03
+  timeMultiplier: 0.98
