@@ -18,9 +18,9 @@ public class PlayerMovement : MonoBehaviour
     {
         float multiplier = 100f;
         Vector2 movementDelta = playerInputHandler.GetMovementDelta();
-        Vector3 movementForce = new Vector3 (movementDelta.x, 0, movementDelta.y);
+        Vector3 movementForce = new Vector3(movementDelta.x, 0, movementDelta.y);
         movementForce = movementForce * playerSpeed * Time.deltaTime * multiplier;
-       
+
         if (rb.linearVelocity.magnitude >= maxVelocity) movementForce = Vector3.zero;
         //rb.AddForce(movementForce, ForceMode.Force);
 

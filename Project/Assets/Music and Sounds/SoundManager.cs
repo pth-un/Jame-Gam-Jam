@@ -64,10 +64,10 @@ public class SoundManager : MonoBehaviour
         musicSource.UnPause();
     }
     // more like for effects
-    public void PlaySFX(string name)
+    public void PlaySoundClipFromArray(AudioClip[] audioClips, Vector3 spawnPos)
     {
-        if (sfxDict.TryGetValue(name, out var clip))
-            sfxSource.PlayOneShot(clip);
+        AudioClip clipToPlay = audioClips[UnityEngine.Random.Range(0, audioClips.Length - 1)];
+        AudioSource.PlayClipAtPoint(clipToPlay, spawnPos);
     }
 
     public void SetMasterVolume(float volume)

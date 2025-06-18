@@ -10,7 +10,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float contactDamage = 30f;
     [SerializeField] protected bool shootTowardsPlayer;
     [SerializeField] protected bool moveTowardsPlayer;
-    [SerializeField] private GameObject onHitEffect;
 
     protected float health;
     private bool initialized = false;
@@ -51,21 +50,5 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         {
             player.TakeDamage(contactDamage);
         }
-
-        Debug.Log(collision.transform.GetComponent<Projectile>());
-        if (collision.transform.GetComponent<Projectile>())
-        {
-            ContactPoint contactPoint = collision.contacts[0];
-            Vector3 location = contactPoint.point;
-            Vector3 normal = contactPoint.normal;
-            Quaternion rotation = Quaternion.LookRotation(-normal);
-
-            ParticleSystemManager.Instance.SpawnParticles(onHitEffect, location, rotation);
-        }
-    }
-
-    public GameObject ReturnHitEffect()
-    {
-        return onHitEffect;
     }
 }

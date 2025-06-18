@@ -6,5 +6,4 @@ public interface IDamageable
 
     public void Heal(float health);
     public void Die();
-    public GameObject ReturnHitEffect();
 }

@@ -4970,6 +4970,12 @@ MonoBehaviour:
   bulletsFireRate: 60
   gunShootPositions:
   - {fileID: 4217463574301798614}
+  gunShootAudionClips:
+  - {fileID: 8300000, guid: 3d391460f2d8a41eb900ac34c552c3b5, type: 3}
+  - {fileID: 8300000, guid: db26c299c883d44dfb2214439ac017a1, type: 3}
+  - {fileID: 8300000, guid: c02cb3f1680a44d7187ff471d76f9bc3, type: 3}
+  - {fileID: 8300000, guid: bd1c1a4edbef24f13a3b16534f61fe4b, type: 3}
+  - {fileID: 8300000, guid: e95b099a476064eae8ccf0da35723d40, type: 3}
   isPlayerGun: 0
 --- !u!114 &6179686462344078248
 MonoBehaviour:
@@ -4988,7 +4994,6 @@ MonoBehaviour:
   contactDamage: 30
   shootTowardsPlayer: 0
   moveTowardsPlayer: 0
-  onHitEffect: {fileID: 1873189808337132921, guid: 4eca26b6bb14f481ba1fe59c710894c0, type: 3}
   sidewaysMovementForce: 10
   leftMovementTime: 2
   rightMovementTime: 2

@@ -13,9 +13,11 @@ public class Gun : MonoBehaviour
     private PlayerInputHandler playerInputHandler;
     private float shootTimer;
     private bool canShoot;
+    private float fireRate;
 
     private void Start()
     {
+        fireRate = 60 / bulletsFireRate;
         if (isPlayerGun) playerInputHandler = PlayerInputHandler.Instance;
         bulletsSpool = BulletsSpool.Instance;
     }
@@ -55,10 +57,9 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void PlayShootSound(Transform position)
+    private void PlayShootSound(Transform soundPosition)
     {
-        AudioClip clipToPlay = gunShootAudionClips[UnityEngine.Random.Range(0, gunShootAudionClips.Length - 1)];
-        AudioSource.PlayClipAtPoint(clipToPlay, position.position);
+        SoundManager.Instance.PlaySoundClipFromArray(gunShootAudionClips, soundPosition.position);
     }
 
 
@@ -67,7 +68,6 @@ public class Gun : MonoBehaviour
         if (!canShoot)
         {
             shootTimer += Time.deltaTime;
-            float fireRate = 60 / bulletsFireRate;
             if (shootTimer >= fireRate)
             {
                 canShoot = true;

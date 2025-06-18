@@ -6,7 +6,8 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private float bulletProjectileForce;
-    [SerializeField] private GameObject shootParticles;
+    [SerializeField] private GameObject shootParticles, onHitEffect;
+    [SerializeField] private AudioClip[] onHitClips;
 
     [Serializable]
     private enum BulletType { bullet, rocket, laser }
@@ -57,7 +58,21 @@ public class Projectile : MonoBehaviour
             damageable.TakeDamage(damage);
 
             GetComponentInParent<BulletsSpool>().ResetBullet(this.gameObject);
+
+            SpawnParticlesOnHit(collision);
+
+            SoundManager.Instance.PlaySoundClipFromArray(onHitClips, collision.contacts[0].point);
         }
+    }
+
+    private void SpawnParticlesOnHit(Collision collision)
+    {
+        ContactPoint contactPoint = collision.contacts[0];
+        Vector3 location = contactPoint.point;
+        Vector3 normal = contactPoint.normal;
+        Quaternion rotation = Quaternion.LookRotation(normal);
+
+        ParticleSystemManager.Instance.SpawnParticles(onHitEffect, location, rotation);
     }
 
     private void SpawnParticles()

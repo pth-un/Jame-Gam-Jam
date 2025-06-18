@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5166563855455030284}
   - component: {fileID: 6175935513546570234}
-  - component: {fileID: -1892080827426163482}
-  m_Layer: 0
+  - component: {fileID: 4597025422155466577}
+  m_Layer: 8
   m_Name: NormalBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &-1892080827426163482
+--- !u!114 &4597025422155466577
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -74,8 +74,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  bulletProjectileForce: 80
+  bulletProjectileForce: 60
   shootParticles: {fileID: 2579498049727559182, guid: 04309350acbfa467e917158127ae62fd, type: 3}
+  onHitEffect: {fileID: 1873189808337132921, guid: 4eca26b6bb14f481ba1fe59c710894c0, type: 3}
+  onHitClips:
+  - {fileID: 8300000, guid: a5570dd21845c4041b04c3a1e2779b99, type: 3}
+  - {fileID: 8300000, guid: 50f8398fa0cac42b9931bd60d5f58a6d, type: 3}
+  - {fileID: 8300000, guid: bfe13b96eff5242fb8cdf6831ce2dab7, type: 3}
+  - {fileID: 8300000, guid: f16e0f868c62042f6bc1948fed345ea0, type: 3}
+  - {fileID: 8300000, guid: 7dba360f6bb7b4030825fabacd10d0f9, type: 3}
+  - {fileID: 8300000, guid: 7c4bd4c04a8104d31a92ab2d5faef591, type: 3}
+  - {fileID: 8300000, guid: 49ed9ce0c78304a82a37d4f43886485b, type: 3}
+  - {fileID: 8300000, guid: a0beb7294ff774ff7908b334ac655c9d, type: 3}
   bulletType: 0
 --- !u!1001 &6976029611582163507
 PrefabInstance:
@@ -140,6 +150,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9705cdda369ae47d8b2210aa7c785413, type: 3}
       propertyPath: m_Name
       value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9705cdda369ae47d8b2210aa7c785413, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
