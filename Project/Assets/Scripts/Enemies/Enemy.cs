@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using TMPro.EditorUtilities;
 using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public abstract class Enemy : MonoBehaviour, IDamageable
