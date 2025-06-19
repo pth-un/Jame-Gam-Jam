@@ -16,6 +16,7 @@ public class SineWaveEnemy : Enemy
 
     private void Update()
     {
+        HandleShootAllow();
         Move();
     }
 
@@ -35,6 +36,6 @@ public class SineWaveEnemy : Enemy
         move.x = sinCenterX + sin;
 
         transform.position = move;
-        if(shootConstantly) Shoot();
+        if(shootConstantly && shootingAllowed) Shoot();
     }
 }

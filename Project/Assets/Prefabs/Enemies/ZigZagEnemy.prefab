@@ -4999,6 +4999,8 @@ MonoBehaviour:
   onDestroyEffect: {fileID: 2579498049727559182, guid: 04309350acbfa467e917158127ae62fd, type: 3}
   onDieClip:
   - {fileID: 8300000, guid: fe784014159084d4792231caf8730e87, type: 3}
+  shootTime: 3
+  noShootTime: 4
   sidewaysMovementForce: 10
   leftMovementTime: 2
   rightMovementTime: 2
@@ -9884,6 +9886,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3ebee3133dacf4b2c9dff236a3ea6297, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c93ef013b17e049138d15465edcf7408, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 3ebee3133dacf4b2c9dff236a3ea6297, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c93ef013b17e049138d15465edcf7408, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 3ebee3133dacf4b2c9dff236a3ea6297, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c93ef013b17e049138d15465edcf7408, type: 2}
     - target: {fileID: 919132149155446097, guid: 3ebee3133dacf4b2c9dff236a3ea6297, type: 3}
       propertyPath: m_Name
       value: Shark
@@ -9895,10 +9909,33 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ebee3133dacf4b2c9dff236a3ea6297, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8840018696534200904}
   m_SourcePrefab: {fileID: 100100000, guid: 3ebee3133dacf4b2c9dff236a3ea6297, type: 3}
 --- !u!4 &2779643377883084316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3ebee3133dacf4b2c9dff236a3ea6297, type: 3}
   m_PrefabInstance: {fileID: 2385218478895370743}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3303555529746197670 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3ebee3133dacf4b2c9dff236a3ea6297, type: 3}
+  m_PrefabInstance: {fileID: 2385218478895370743}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8840018696534200904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3303555529746197670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e185254a6e2a442eadb22bad59517e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: c93ef013b17e049138d15465edcf7408, type: 2}
+  multiplier: 0.1
+  startIntensity: 0.5

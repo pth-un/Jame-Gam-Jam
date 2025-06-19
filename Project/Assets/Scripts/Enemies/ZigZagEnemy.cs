@@ -21,6 +21,7 @@ public class ZigZagEnemy : Enemy
 
     private void Update()
     {
+        HandleShootAllow();
         Move();
     }
 

@@ -12,12 +12,31 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected bool moveTowardsPlayer;
     [SerializeField] protected GameObject onDestroyEffect;
     [SerializeField] protected AudioClip[] onDieClip;
+    [SerializeField] protected float shootTime, noShootTime;
 
+    protected bool shootingAllowed = false;
+    protected float timer;
     protected float health;
     private bool initialized = false;
 
     protected abstract void Shoot();
     protected abstract void Move();
+
+    protected void HandleShootAllow()
+    {
+
+        timer += Time.deltaTime;
+        if (!shootingAllowed && timer > noShootTime)
+        {
+            timer = 0f;
+            shootingAllowed = true;
+        }
+        else if (shootingAllowed && timer > shootTime)
+        {
+            timer = 0f;
+            shootingAllowed = false;
+        }
+    }
 
     public void Die()
     {

@@ -19,6 +19,7 @@ public class ComplexEnemy : Enemy
 
     private void Update()
     {
+        HandleShootAllow();
         switch (currentState)
         {
             case State.MoveStraight:
@@ -37,7 +38,7 @@ public class ComplexEnemy : Enemy
     protected override void Move()
     {
         transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, moveSpeed * Time.deltaTime);
-        Shoot();
+        if(shootingAllowed) Shoot();
     }
 
     protected override void Shoot()

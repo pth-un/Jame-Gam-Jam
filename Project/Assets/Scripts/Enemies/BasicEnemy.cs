@@ -3,9 +3,14 @@ using UnityEngine;
 
 public class BasicEnemy : Enemy
 {
+    [SerializeField] private Material material;
+    [SerializeField] private float multiplier = 10f;
 
+    private float intensity = 0.8f;
+    
     private void Update()
     {
+        HandleShootAllow();
         Move();
     }
 
@@ -18,7 +23,7 @@ public class BasicEnemy : Enemy
     {
         if (moveTowardsPlayer) transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, moveSpeed * Time.deltaTime);
         else transform.position += transform.forward * moveSpeed * Time.deltaTime;
-        Shoot();
+        if(shootingAllowed) Shoot();
     }
 }
 
