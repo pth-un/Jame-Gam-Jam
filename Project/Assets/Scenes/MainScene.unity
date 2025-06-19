@@ -196,7 +196,7 @@ Transform:
   m_GameObject: {fileID: 140141149}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.92, y: -0.58, z: 3.83}
+  m_LocalPosition: {x: -1.62, y: 2, z: 7.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -259,6 +259,7 @@ MonoBehaviour:
   isPlayerGun: 1
   shakeIntensity: 3
   shakeTime: 0.1
+  bulletsSpool: {fileID: 1017303913}
 --- !u!1 &188401992
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e93ebe84abcc34292863d11e8584045f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalCameraShake: 0.4
 --- !u!1 &232434321
 GameObject:
   m_ObjectHideFlags: 0
@@ -5431,7 +5433,6 @@ GameObject:
   - component: {fileID: 367735099}
   - component: {fileID: 367735098}
   - component: {fileID: 367735097}
-  - component: {fileID: 367735096}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -5439,103 +5440,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &367735096
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367735095}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!82 &367735097
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5647,6 +5551,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 367735097}
   sfxSource: {fileID: 4976268411576471525, guid: bff8b7944020c4bf696ace78065c1272, type: 3}
+  gameMusic:
+  - {fileID: 8300000, guid: 9834a813a81f9477cb819e690f75a063, type: 3}
+  - {fileID: 8300000, guid: d920755b40a7947bd94850a5e765a397, type: 3}
   musicClips: []
   sfxClips: []
 --- !u!4 &367735099
@@ -5785,6 +5692,37 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &432162566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 432162567}
+  m_Layer: 0
+  m_Name: AsteroidDestroy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &432162567
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432162566}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 34.72404, y: -30.706278, z: -16.338312}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &568168054
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5886,7 +5824,7 @@ Transform:
   m_GameObject: {fileID: 684724166}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.69, y: -0.58, z: 4.11}
+  m_LocalPosition: {x: 1.52, y: 2.29, z: 7.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11306,7 +11244,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 3327351216778264074, guid: 9345b9aa4571944168067b1f9c52c818, type: 3}
+  - {fileID: 3327351216778264074, guid: d27a390c9b40547a39ada2ddb30afe59, type: 3}
+  - {fileID: 4922042010132001393, guid: 45e0f261dd9634d5db1d40c8b6dd48c1, type: 3}
+  - {fileID: 1393245130247668696, guid: 680e34c7c7ee94dd99860fd5c394701a, type: 3}
+  timelineAsset: {fileID: 2061179077}
   spawnPosition: {fileID: 1495774749}
+--- !u!1 &1782189407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1782189408}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1782189408
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782189407}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -464.68304, y: -311.38858, z: 192.84084}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1855798858
 GameObject:
   m_ObjectHideFlags: 0
@@ -11472,7 +11445,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1495774750}
           m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-          m_MethodName: SpawnWave
+          m_MethodName: CueSpawnWave
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -11593,3 +11566,5 @@ SceneRoots:
   - {fileID: 2061179078}
   - {fileID: 1495774749}
   - {fileID: 1855798859}
+  - {fileID: 1782189408}
+  - {fileID: 432162567}

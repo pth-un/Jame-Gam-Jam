@@ -6,9 +6,7 @@ public class ZigZagEnemy : Enemy
     [Header("ZigZagEnemySettings")]
     [SerializeField] private float sidewaysMovementForce;
     [SerializeField] private float leftMovementTime, rightMovementTime;
-    [SerializeField] private bool shootConstantly;
 
-    private IEnumerator coroutine;
     private enum Direction { left, right}
     private Direction direction;
     private bool coroutineStarted;
@@ -21,13 +19,14 @@ public class ZigZagEnemy : Enemy
 
     private void Update()
     {
+        Shoot();
         HandleShootAllow();
         Move();
     }
 
     protected override void Shoot()
     {
-        GetComponent<Gun>().HandleFire(1 << gameObject.layer, shootTowardsPlayer);
+        if(shootingAllowed) GetComponent<Gun>().HandleFire(1 << gameObject.layer, shootTowardsPlayer);
     }
 
     protected override void Move()

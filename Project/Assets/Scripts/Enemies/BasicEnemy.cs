@@ -3,11 +3,6 @@ using UnityEngine;
 
 public class BasicEnemy : Enemy
 {
-    [SerializeField] private Material material;
-    [SerializeField] private float multiplier = 10f;
-
-    private float intensity = 0.8f;
-    
     private void Update()
     {
         HandleShootAllow();

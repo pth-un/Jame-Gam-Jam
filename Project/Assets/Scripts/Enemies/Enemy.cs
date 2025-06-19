@@ -12,8 +12,9 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected bool moveTowardsPlayer;
     [SerializeField] protected GameObject onDestroyEffect;
     [SerializeField] protected AudioClip[] onDieClip;
-    [SerializeField] protected float shootTime, noShootTime;
+    [SerializeField] protected float shootTime, noShootTime, waitTillFirstShot;
 
+    protected bool firstShot=true;
     protected bool shootingAllowed = false;
     protected float timer;
     protected float health;
@@ -24,7 +25,17 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected void HandleShootAllow()
     {
-
+        if (firstShot)
+        {
+            timer += Time.deltaTime;
+            if (!shootingAllowed && timer > waitTillFirstShot)
+            {
+                timer = 0f;
+                shootingAllowed = true;
+                firstShot = false;
+            }
+            return;
+        }
         timer += Time.deltaTime;
         if (!shootingAllowed && timer > noShootTime)
         {
@@ -72,6 +83,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         if (player != null)
         {
             player.TakeDamage(contactDamage);
+            Die();
         }
     }
 }

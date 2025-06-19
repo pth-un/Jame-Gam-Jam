@@ -13,9 +13,9 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioClip[] gunShootAudionClips;
     [SerializeField] private bool isPlayerGun;
     [SerializeField] private float shakeIntensity, shakeTime;
+    [SerializeField] private BulletsSpool bulletsSpool;
 
 
-    private BulletsSpool bulletsSpool;
     private PlayerInputHandler playerInputHandler;
     private float shootTimer;
     private bool canShoot;
@@ -34,7 +34,6 @@ public class Gun : MonoBehaviour
             playerInputHandler = PlayerInputHandler.Instance;
             if (PlayerGun == null) PlayerGun = this;
         }
-        bulletsSpool = BulletsSpool.Instance;
     }
 
     private void Update()

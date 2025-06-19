@@ -5,7 +5,7 @@ public class SineWaveEnemy : Enemy
     [Header("SineWaveSettings")]
     [SerializeField] private float amplitude = 5f;
     [SerializeField] private float frequency = 0.4f;
-    [SerializeField] private bool inverted, shootConstantly;
+    [SerializeField] private bool inverted;
 
     private float sinCenterX;
 
@@ -36,6 +36,6 @@ public class SineWaveEnemy : Enemy
         move.x = sinCenterX + sin;
 
         transform.position = move;
-        if(shootConstantly && shootingAllowed) Shoot();
+        if(shootingAllowed) Shoot();
     }
 }

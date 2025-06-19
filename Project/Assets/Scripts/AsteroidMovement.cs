@@ -5,6 +5,7 @@ public class AsteroidMovement : MonoBehaviour
 {
     [SerializeField] private float rotationForce;
     [SerializeField] private float damageToPlayer = 30f;
+    [SerializeField] private GameObject onDestroyEffect;
 
     private Rigidbody rb;
     private void ChangeRotation()
@@ -25,6 +26,7 @@ public class AsteroidMovement : MonoBehaviour
     {
         if (collision.transform.GetComponent<PlayerHealth>())
         {
+            ParticleSystemManager.Instance.SpawnParticles(onDestroyEffect, transform.position, transform.rotation);
             collision.transform.GetComponent<PlayerHealth>().TakeDamage(damageToPlayer);
             Destroy(this.gameObject);
         }

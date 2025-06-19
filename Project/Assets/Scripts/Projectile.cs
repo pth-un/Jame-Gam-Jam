@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
     [Serializable]
     private enum BulletType { bullet, rocket, laser }
     [SerializeField] private BulletType bulletType;
+    [SerializeField] private bool rocketFollowPlayer;
 
     private IEnumerator coroutine;
 
@@ -42,7 +43,8 @@ public class Projectile : MonoBehaviour
 
     private void HandleRocketMovement()
     {
-        transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, bulletProjectileForce * Time.deltaTime);
+        if (rocketFollowPlayer) transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, bulletProjectileForce * Time.deltaTime);
+        else transform.position += transform.forward * bulletProjectileForce * Time.deltaTime;
     }
 
     private IEnumerator WaitCoroutine(int _destroyWaitTime)

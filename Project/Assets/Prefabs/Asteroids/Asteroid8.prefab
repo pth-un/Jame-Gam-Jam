@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationForce: 10
   damageToPlayer: 30
+  onDestroyEffect: {fileID: 6218984335135498411, guid: b3d4344e7aa6f4bd0b3dba4e6ede9ed8, type: 3}
 --- !u!54 &4817930671712952242
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource sfxSource;
 
     [Header("Audio Clips")]
+    [SerializeField] private AudioClip[] gameMusic;
     public List<NamedClip> musicClips;
     public List<NamedClip> sfxClips;
 
@@ -31,6 +32,11 @@ public class SoundManager : MonoBehaviour
         sfxDict = LoadClipDictionary(sfxClips);
     }
 
+    private void Start()
+    {
+        PlayMusic(gameMusic);
+    }
+
     private Dictionary<string, AudioClip> LoadClipDictionary(List<NamedClip> clips)
     {
         var dict = new Dictionary<string, AudioClip>();
@@ -40,14 +46,20 @@ public class SoundManager : MonoBehaviour
         return dict;
     }
     // for background music etc
-    public void PlayMusic(string name, bool loop = true)
+    // public void PlayMusic(string name, bool loop = true)
+    // {
+    //     if (musicDict.TryGetValue(name, out var clip))
+    //     {
+    //         musicSource.clip = clip;
+    //         musicSource.loop = loop;
+    //         musicSource.Play();
+    //     }
+    // }
+
+    public void PlayMusic(AudioClip[] musicClips)
     {
-        if (musicDict.TryGetValue(name, out var clip))
-        {
-            musicSource.clip = clip;
-            musicSource.loop = loop;
-            musicSource.Play();
-        }
+        musicSource.clip = musicClips[UnityEngine.Random.Range(0, musicClips.Length - 1)];
+        musicSource.Play();
     }
 
     public void StopMusic()

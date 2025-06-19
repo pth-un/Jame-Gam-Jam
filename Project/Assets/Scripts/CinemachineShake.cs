@@ -6,6 +6,8 @@ public class CinemachineShake : MonoBehaviour
 {
     public static CinemachineShake Instance { get; private set; }
 
+    [SerializeField] private float normalCameraShake;
+
     private CinemachineCamera cinemachineCamera;
     private float timer;
 
@@ -17,7 +19,7 @@ public class CinemachineShake : MonoBehaviour
 
     private void Start()
     {
-        
+        NormalShake();
         Gun.PlayerGun.OnGunShoot += Shake;
     }
 
@@ -28,15 +30,15 @@ public class CinemachineShake : MonoBehaviour
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
-                StopShake();
+                NormalShake();
                 timer = 0;
             }
         }
     }
 
-    private void StopShake()
+    private void NormalShake()
     {
-        cinemachineCamera.GetComponent<CinemachineBasicMultiChannelPerlin>().AmplitudeGain = 0;
+        cinemachineCamera.GetComponent<CinemachineBasicMultiChannelPerlin>().AmplitudeGain = normalCameraShake;
     }
 
     private void Shake(object sender, Gun.OnGunShoot_Args e)

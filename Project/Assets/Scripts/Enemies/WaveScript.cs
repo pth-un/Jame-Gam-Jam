@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 public class WaveScript : MonoBehaviour
 {
+    public event EventHandler onWaveFinished;
+
     private List<Enemy> listOfEnemies;
 
     private void Start()
@@ -17,6 +20,7 @@ public class WaveScript : MonoBehaviour
         listOfEnemies.Remove(enemy);
         if (listOfEnemies.Count == 0)
         {
+            onWaveFinished?.Invoke(this, EventArgs.Empty);
             Destroy(this.gameObject);
         }
     }

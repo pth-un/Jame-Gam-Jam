@@ -7,15 +7,12 @@ public class BulletsSpool : MonoBehaviour
     [SerializeField] private int spawnBulletCount;
     [SerializeField] private GameObject projectilePrefab;
 
-    public static BulletsSpool Instance;
-
     private List<GameObject> bulletProjectiles;
     private int disabledBullets;
 
     private void Awake()
     {
         bulletProjectiles = new List<GameObject>();
-        Instance = this;
     }
 
     private void Start()
