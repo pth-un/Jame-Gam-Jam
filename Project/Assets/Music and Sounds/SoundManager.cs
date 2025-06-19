@@ -64,10 +64,17 @@ public class SoundManager : MonoBehaviour
         musicSource.UnPause();
     }
     // more like for effects
-    public void PlaySoundClipFromArray(AudioClip[] audioClips, Vector3 spawnPos)
+    public void PlaySoundClipFromArray(AudioClip[] audioClips, Vector3 spawnPos, float volume = 1f)
     {
-        AudioClip clipToPlay = audioClips[UnityEngine.Random.Range(0, audioClips.Length - 1)];
-        AudioSource.PlayClipAtPoint(clipToPlay, spawnPos);
+        if (audioClips[UnityEngine.Random.Range(0, audioClips.Length - 1)])
+        {
+            AudioClip clipToPlay = audioClips[UnityEngine.Random.Range(0, audioClips.Length - 1)];
+            AudioSource audioSource = Instantiate(sfxSource, spawnPos, Quaternion.identity);
+            audioSource.clip = clipToPlay;
+            audioSource.volume = volume;
+            audioSource.Play();
+            Destroy(audioSource.gameObject, audioSource.clip.length);
+        }
     }
 
     public void SetMasterVolume(float volume)

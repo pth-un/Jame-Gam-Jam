@@ -9741,6 +9741,9 @@ MonoBehaviour:
   contactDamage: 30
   shootTowardsPlayer: 1
   moveTowardsPlayer: 0
+  onDestroyEffect: {fileID: 2579498049727559182, guid: 04309350acbfa467e917158127ae62fd, type: 3}
+  onDieClip:
+  - {fileID: 8300000, guid: fe784014159084d4792231caf8730e87, type: 3}
   minDistToPlayer: 120
 --- !u!114 &8347181577854510372
 MonoBehaviour:
@@ -9764,6 +9767,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: bd1c1a4edbef24f13a3b16534f61fe4b, type: 3}
   - {fileID: 8300000, guid: e95b099a476064eae8ccf0da35723d40, type: 3}
   isPlayerGun: 0
+  shakeIntensity: 0
+  shakeTime: 0
 --- !u!1 &8229672076899682290
 GameObject:
   m_ObjectHideFlags: 0

@@ -9793,7 +9793,7 @@ GameObject:
   - component: {fileID: 1901578912261695046}
   - component: {fileID: -8614271017867216401}
   m_Layer: 0
-  m_Name: VFX_OnShoot
+  m_Name: VF_OnShoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

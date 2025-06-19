@@ -75,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   bulletProjectileForce: 60
-  shootParticles: {fileID: 2579498049727559182, guid: 04309350acbfa467e917158127ae62fd, type: 3}
+  shootParticles: {fileID: 2579498049727559182, guid: 76e6509697d95413ba9d64853400f261, type: 3}
   onHitEffect: {fileID: 1873189808337132921, guid: 4eca26b6bb14f481ba1fe59c710894c0, type: 3}
   onHitClips:
   - {fileID: 8300000, guid: a5570dd21845c4041b04c3a1e2779b99, type: 3}

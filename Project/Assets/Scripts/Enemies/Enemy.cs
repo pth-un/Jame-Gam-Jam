@@ -10,6 +10,8 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected float contactDamage = 30f;
     [SerializeField] protected bool shootTowardsPlayer;
     [SerializeField] protected bool moveTowardsPlayer;
+    [SerializeField] protected GameObject onDestroyEffect;
+    [SerializeField] protected AudioClip[] onDieClip;
 
     protected float health;
     private bool initialized = false;
@@ -19,6 +21,9 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        SoundManager.Instance.PlaySoundClipFromArray(onDieClip, transform.position);
+        ParticleSystemManager.Instance.SpawnParticles(onDestroyEffect, transform.position, transform.rotation);
+        GetComponentInParent<WaveScript>().OnEnemyDie(this);
         Destroy(this.gameObject);
     }
 
@@ -37,7 +42,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
             initialized = true;
         }
         health -= damage;
-        Debug.Log(health);
         if (health <= 0)
             Die();
     }

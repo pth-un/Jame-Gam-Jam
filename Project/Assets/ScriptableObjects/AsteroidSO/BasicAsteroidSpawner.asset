@@ -23,7 +23,7 @@ MonoBehaviour:
   - {fileID: 7245979525997843158, guid: 4adedd5f29ecb4186895e467f309f9e2, type: 3}
   - {fileID: 3807215995553833514, guid: 7ea7e61cafaea4fbcb9e6ff3b6bc9387, type: 3}
   - {fileID: 8335168279373851544, guid: 0f43972c8410044219bfa65d92919bdd, type: 3}
-  force: 40
-  timeBetweenSpawn: 8
-  forceMultiplier: 1.03
-  timeMultiplier: 0.98
+  force: 25
+  timeBetweenSpawn: 10
+  forceMultiplier: 1
+  timeMultiplier: 1
