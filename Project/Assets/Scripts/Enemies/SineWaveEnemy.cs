@@ -11,12 +11,14 @@ public class SineWaveEnemy : Enemy
 
     private void Start()
     {
+        SoundManager.Instance.PlaySoundClipFromArray(enemySpawnClips, transform.position);
         sinCenterX = transform.position.x;
     }
 
     private void Update()
     {
         HandleShootAllow();
+        HandleMoveAllow();
         Move();
     }
 
@@ -27,15 +29,18 @@ public class SineWaveEnemy : Enemy
 
     protected override void Move()
     {
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        if (movementAllow)
+        {
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
 
-        Vector3 move = transform.position;
+            Vector3 move = transform.position;
 
-        float sin = Mathf.Sin(move.z * frequency) * amplitude;
-        if (inverted) sin *= -1;
-        move.x = sinCenterX + sin;
+            float sin = Mathf.Sin(move.z * frequency) * amplitude;
+            if (inverted) sin *= -1;
+            move.x = sinCenterX + sin;
 
-        transform.position = move;
-        if(shootingAllowed) Shoot();
+            transform.position = move;
+        }
+        if (shootingAllowed) Shoot();
     }
 }

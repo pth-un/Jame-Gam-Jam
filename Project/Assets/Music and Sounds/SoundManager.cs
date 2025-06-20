@@ -34,7 +34,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic(gameMusic);
+        PlayMusic(gameMusic, 0.3f);
     }
 
     private Dictionary<string, AudioClip> LoadClipDictionary(List<NamedClip> clips)
@@ -56,9 +56,10 @@ public class SoundManager : MonoBehaviour
     //     }
     // }
 
-    public void PlayMusic(AudioClip[] musicClips)
+    public void PlayMusic(AudioClip[] musicClips, float _volume)
     {
         musicSource.clip = musicClips[UnityEngine.Random.Range(0, musicClips.Length - 1)];
+        musicSource.volume = _volume;
         musicSource.Play();
     }
 

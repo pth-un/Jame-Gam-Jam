@@ -64,7 +64,6 @@ public class BulletsSpool : MonoBehaviour
 
         if (disabledBullets >= spawnBulletCount)
         {
-            Debug.Log("Deleting Bullets");
             bulletProjectiles.Remove(bulletToReset);
             Destroy(bulletToReset);
         }

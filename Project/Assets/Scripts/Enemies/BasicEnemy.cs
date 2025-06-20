@@ -3,9 +3,14 @@ using UnityEngine;
 
 public class BasicEnemy : Enemy
 {
+    private void Start()
+    {
+        SoundManager.Instance.PlaySoundClipFromArray(enemySpawnClips, transform.position);
+    }
     private void Update()
     {
         HandleShootAllow();
+        HandleMoveAllow();
         Move();
     }
 
@@ -16,9 +21,12 @@ public class BasicEnemy : Enemy
 
     protected override void Move()
     {
-        if (moveTowardsPlayer) transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, moveSpeed * Time.deltaTime);
-        else transform.position += transform.forward * moveSpeed * Time.deltaTime;
-        if(shootingAllowed) Shoot();
+        if (movementAllow)
+        {
+            if (moveTowardsPlayer) transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, moveSpeed * Time.deltaTime);
+            else transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        }
+        if (shootingAllowed) Shoot();
     }
 }
 

@@ -14,6 +14,7 @@ public class ComplexEnemy : Enemy
 
     private void Start()
     {
+        SoundManager.Instance.PlaySoundClipFromArray(enemySpawnClips, transform.position);
         currentState = State.MoveStraight;
     }
 
@@ -30,6 +31,7 @@ public class ComplexEnemy : Enemy
                 }
                 return;
             case State.MoveTowardsPlayer:
+                HandleMoveAllow();
                 Move();
                 return;
         }
@@ -37,7 +39,7 @@ public class ComplexEnemy : Enemy
 
     protected override void Move()
     {
-        transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, moveSpeed * Time.deltaTime);
+        if(movementAllow) transform.position = Vector3.MoveTowards(transform.position, PlayerInputHandler.Instance.transform.position, moveSpeed * Time.deltaTime);
         if(shootingAllowed) Shoot();
     }
 

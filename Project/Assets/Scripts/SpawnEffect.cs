@@ -16,7 +16,6 @@ public class SpawnEffect : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(material.GetFloat("_Intensity"));
         if (material.GetFloat("_Intensity") > 0)
         {
             intensity -= multiplier * Time.deltaTime;

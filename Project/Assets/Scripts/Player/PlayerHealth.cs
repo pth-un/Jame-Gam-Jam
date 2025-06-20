@@ -1,18 +1,28 @@
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
+    public static PlayerHealth Instance;
+
+
     [SerializeField]
-    private float maxHealth;
+    private float maxHealth, enemyKillHealthIncrease;
     [SerializeField] private AudioClip[] onHitClips;
 
     private float health;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
 
     private void Start()
     {
         health = maxHealth;
     }
-    
+
     public void Die()
     {
         Debug.Log("Dead");
@@ -20,9 +30,15 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void Heal(float heal)
     {
-        health += heal;
-        if (health > maxHealth)
-            heal = maxHealth;
+        float currentHealth = health + heal;
+        if (currentHealth > maxHealth)
+        {
+            health = maxHealth;
+        }
+        else
+        {
+            health = currentHealth;
+        }
     }
 
     public void TakeDamage(float damage)
@@ -31,5 +47,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         health -= damage;
         if (health < 0)
             Die();
+    }
+
+    public float GetPlayerHealthRate()
+    {
+        return health / maxHealth;
+    }
+
+    public void BoostMaxHealth(float boostStatValue)
+    {
+        maxHealth += boostStatValue;
+        Debug.Log(maxHealth);
     }
 }

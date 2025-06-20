@@ -10,9 +10,14 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected bool moveTowardsPlayer;
     [SerializeField] protected GameObject onDestroyEffect;
     [SerializeField] protected AudioClip[] onDieClip;
+    [SerializeField] protected AudioClip[] enemySpawnClips;
     [SerializeField] protected float shootTime, noShootTime, waitTillFirstShot;
+    [SerializeField] protected float maxDistToPlayer = 80f;
+    [SerializeField] protected bool stopBeforePlayer;
+    [SerializeField] protected PCBHeal pcbHeal;
 
-    protected bool firstShot=true;
+    protected bool movementAllow = true;
+    protected bool firstShot = true;
     protected bool shootingAllowed = false;
     protected float timer;
     protected float health;
@@ -20,6 +25,14 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     protected abstract void Shoot();
     protected abstract void Move();
+
+    protected void HandleMoveAllow()
+    {
+        if (stopBeforePlayer && Vector3.Distance(transform.position, PlayerInputHandler.Instance.transform.position) < maxDistToPlayer)
+        {
+            movementAllow = false;
+        }
+    }
 
     protected void HandleShootAllow()
     {
@@ -49,9 +62,11 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public void Die()
     {
+        Debug.Log("Instantiate pcb heal");
         SoundManager.Instance.PlaySoundClipFromArray(onDieClip, transform.position);
         ParticleSystemManager.Instance.SpawnParticles(onDestroyEffect, transform.position, transform.rotation);
         GetComponentInParent<WaveScript>().OnEnemyDie(this);
+        Instantiate(pcbHeal, transform.position, transform.rotation);
         Destroy(this.gameObject);
     }
 
@@ -71,7 +86,9 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         }
         health -= damage;
         if (health <= 0)
+        {
             Die();
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

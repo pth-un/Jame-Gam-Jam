@@ -7,13 +7,13 @@ public class PlayerInputHandler : MonoBehaviour
     private static PlayerInputHandler instance;
     public static PlayerInputHandler Instance { get { return instance; }}
 
+    public event EventHandler OnReloadEvent;
+
     private PlayerInputActions inputActions;
     private bool isFiring;
 
     private void Awake()
     {
-        inputActions = new PlayerInputActions();
-        inputActions.Player.Enable();
 
         if (instance != null && instance == this)
         {
@@ -21,7 +21,11 @@ public class PlayerInputHandler : MonoBehaviour
         }
         else
         {
+            inputActions = new PlayerInputActions();
+            inputActions.Player.Enable();
             instance = this;
+
+            inputActions.Player.Reload.performed += OnReload;
         }
     }
 
@@ -29,6 +33,12 @@ public class PlayerInputHandler : MonoBehaviour
     {
         inputActions.Player.Fire.performed += OnPlayerFire;
         inputActions.Player.Fire.canceled += OnPlayerFire_Stop;
+
+    }
+
+    private void OnReload(InputAction.CallbackContext context)
+    {
+        OnReloadEvent?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnPlayerFire_Stop(InputAction.CallbackContext context)

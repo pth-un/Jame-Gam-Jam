@@ -13,6 +13,7 @@ public class ZigZagEnemy : Enemy
 
     private void Start()
     {
+        SoundManager.Instance.PlaySoundClipFromArray(enemySpawnClips, transform.position);
         direction = new Direction();
         direction = Direction.left;
     }
@@ -21,6 +22,7 @@ public class ZigZagEnemy : Enemy
     {
         Shoot();
         HandleShootAllow();
+        HandleMoveAllow();
         Move();
     }
 
@@ -34,12 +36,18 @@ public class ZigZagEnemy : Enemy
         switch (direction)
         {
             case Direction.left:
-                if (!coroutineStarted) StartCoroutine(WaitCoroutine(leftMovementTime));
-                transform.position += transform.right * sidewaysMovementForce * -1 * Time.deltaTime + transform.forward * moveSpeed * Time.deltaTime;
+                if (movementAllow)
+                {
+                    if (!coroutineStarted) StartCoroutine(WaitCoroutine(leftMovementTime));
+                    transform.position += transform.right * sidewaysMovementForce * -1 * Time.deltaTime + transform.forward * moveSpeed * Time.deltaTime;
+                }
                 return;
             case Direction.right:
-                if (!coroutineStarted) StartCoroutine(WaitCoroutine(rightMovementTime));
-                transform.position += transform.right * sidewaysMovementForce * Time.deltaTime + transform.forward * moveSpeed * Time.deltaTime;
+                if (movementAllow)
+                {
+                    if (!coroutineStarted) StartCoroutine(WaitCoroutine(rightMovementTime));
+                    transform.position += transform.right * sidewaysMovementForce * Time.deltaTime + transform.forward * moveSpeed * Time.deltaTime;
+                }
                 return;
         }
     }

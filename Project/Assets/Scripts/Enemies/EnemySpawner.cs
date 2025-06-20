@@ -1,26 +1,38 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner Instance;
+
+    public event EventHandler onWaveDestroyed;
+
     [SerializeField]
     private List<GameObject> waves;
 
     [SerializeField] private PlayableDirector timelineAsset;
-
-    private int currentWave = 0;
-    private bool canSpawn=true;
-
     [SerializeField]
     private Transform spawnPosition;
+    [SerializeField] private TextMeshProUGUI wavesText;
+
+    private int currentWave = 0;
+    private bool canSpawn = true;
+
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+        else Destroy(this.gameObject);
+    }
 
     private void Start()
     {
-        Debug.Log(waves);
+        GameManager.Instance.SetWaveCount(waves.Count);
     }
 
     public void CueSpawnWave()
@@ -35,15 +47,19 @@ public class EnemySpawner : MonoBehaviour
     private void SpawnWave()
     {
         timelineAsset.Resume();
-        
+
+        GameManager.Instance.SetWaveCount(waves.Count);
         GameObject wave = Instantiate(waves[currentWave], spawnPosition);
         wave.GetComponent<WaveScript>().onWaveFinished += OnWaveFinished;
         wave.name = $"Wave_{currentWave++}";
         canSpawn = false;
+
+        UpdateWaveUI();
     }
 
     private void OnWaveFinished(object sender, EventArgs e)
     {
+        onWaveDestroyed?.Invoke(this, EventArgs.Empty);
         canSpawn = true;
     }
 
@@ -53,4 +69,9 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitUntil(() => canSpawn);
         SpawnWave();
     }
+    
+    private void UpdateWaveUI()
+    {
+        wavesText.text = "Wave Number - " + currentWave.ToString();
+    } 
 }
