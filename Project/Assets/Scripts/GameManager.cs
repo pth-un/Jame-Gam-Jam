@@ -13,7 +13,13 @@ public class GameManager : MonoBehaviour
         public int WavesDestroyed { get; set; }
     }
 
+    public event EventHandler<EnemyMissed_EventArgs> EnemyMissed_Event;
+    public class EnemyMissed_EventArgs : EventArgs
+    {
+        public int EnemiesMissed { get; set; }
+    }
 
+    private int enemiesMissed = 0;
     private int wavesDestroyed = 0;
     private int currentWave = 1;
     private int wavesLeft;
@@ -27,6 +33,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         EnemySpawner.Instance.onWaveDestroyed += WaveDestroyed;
+        EnemyMissed_Event?.Invoke(this, new EnemyMissed_EventArgs { EnemiesMissed = 0 });
     }
 
     private void WaveDestroyed(object sender, EventArgs e)
@@ -40,5 +47,12 @@ public class GameManager : MonoBehaviour
     public void SetWaveCount(int _waveCount)
     {
         wavesLeft = _waveCount;
+    }
+
+    public void EnemyMissed()
+    {
+        enemiesMissed++;
+        EnemyMissed_Event?.Invoke(this, new EnemyMissed_EventArgs { EnemiesMissed = enemiesMissed });
+
     }
 }

@@ -20,6 +20,8 @@ public class SineWaveEnemy : Enemy
         HandleShootAllow();
         HandleMoveAllow();
         Move();
+        Debug.Log(shootingAllowed);
+        if (shootingAllowed) Shoot();
     }
 
     protected override void Shoot()
@@ -41,6 +43,5 @@ public class SineWaveEnemy : Enemy
 
             transform.position = move;
         }
-        if (shootingAllowed) Shoot();
     }
 }

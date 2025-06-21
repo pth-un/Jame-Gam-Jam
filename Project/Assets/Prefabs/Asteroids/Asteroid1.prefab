@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5503328956956213279}
   - component: {fileID: 5570529068466998605}
   - component: {fileID: 1169642117363975975}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Asteroid1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 896
+    m_Bits: 1920
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
@@ -127,6 +127,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 6e79b01bd478a43f59b27e0988f1f2ec, type: 3}
       propertyPath: m_Name
       value: Asteroid1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6e79b01bd478a43f59b27e0988f1f2ec, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

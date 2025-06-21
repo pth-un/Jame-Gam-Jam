@@ -12,9 +12,11 @@ public abstract class Enemy : MonoBehaviour, IDamageable
     [SerializeField] protected AudioClip[] onDieClip;
     [SerializeField] protected AudioClip[] enemySpawnClips;
     [SerializeField] protected float shootTime, noShootTime, waitTillFirstShot;
-    [SerializeField] protected float maxDistToPlayer = 80f;
     [SerializeField] protected bool stopBeforePlayer;
+    [SerializeField] protected float maxDistToPlayer = 80f;
     [SerializeField] protected PCBHeal pcbHeal;
+    
+    public float enemyMissedDamage = 30f;
 
     protected bool movementAllow = true;
     protected bool firstShot = true;
@@ -60,7 +62,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         }
     }
 
-    public void Die()
+    public void Die(bool spawnHeal=true)
     {
         Debug.Log("Instantiate pcb heal");
         SoundManager.Instance.PlaySoundClipFromArray(onDieClip, transform.position);
@@ -98,7 +100,7 @@ public abstract class Enemy : MonoBehaviour, IDamageable
         if (player != null)
         {
             player.TakeDamage(contactDamage);
-            Die();
+            Die(spawnHeal:false);
         }
     }
 }

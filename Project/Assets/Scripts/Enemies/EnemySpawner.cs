@@ -19,6 +19,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private Transform spawnPosition;
     [SerializeField] private TextMeshProUGUI wavesText;
+    [SerializeField] private GameObject onBossFightScreen;
 
     private int currentWave = 0;
     private bool canSpawn = true;
@@ -43,18 +44,28 @@ public class EnemySpawner : MonoBehaviour
             StartCoroutine(Spawn());
         }
     }
+    
 
     private void SpawnWave()
     {
         timelineAsset.Resume();
 
-        GameManager.Instance.SetWaveCount(waves.Count);
-        GameObject wave = Instantiate(waves[currentWave], spawnPosition);
-        wave.GetComponent<WaveScript>().onWaveFinished += OnWaveFinished;
-        wave.name = $"Wave_{currentWave++}";
-        canSpawn = false;
+        if (!waves[currentWave].GetComponent<WaveScript>().isBossEnemy)
+        {
+            GameObject wave = Instantiate(waves[currentWave], spawnPosition);
 
-        UpdateWaveUI();
+            wave.GetComponent<WaveScript>().onWaveFinished += OnWaveFinished;
+            currentWave++;
+            wave.name = $"Wave_{currentWave}";
+            canSpawn = false;
+
+            UpdateWaveUI();
+        }
+        else
+        {
+            onBossFightScreen.SetActive(true);
+            StartCoroutine(SpawnBossEnemy(2f));
+        }
     }
 
     private void OnWaveFinished(object sender, EventArgs e)
@@ -69,9 +80,24 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitUntil(() => canSpawn);
         SpawnWave();
     }
-    
-    private void UpdateWaveUI()
+
+    private IEnumerator SpawnBossEnemy(float waitTime)
     {
-        wavesText.text = "Wave Number - " + currentWave.ToString();
+        yield return new WaitForSeconds(waitTime);
+        onBossFightScreen.SetActive(false);
+
+        GameObject wave = Instantiate(waves[currentWave], spawnPosition);
+
+        wave.GetComponent<WaveScript>().onWaveFinished += OnWaveFinished;
+        wave.name = $"Wave_{currentWave++}";
+        canSpawn = false;
+
+        UpdateWaveUI(bossEnemy:true, bossEnemyNumber:wave.GetComponent<WaveScript>().bossFightNumber);
+    }
+
+    private void UpdateWaveUI(bool bossEnemy = false, int bossEnemyNumber=0)
+    {
+        if (!bossEnemy) wavesText.text = "wave number - " + currentWave.ToString();
+        else wavesText.text = "boss fight number- " + bossEnemyNumber;
     } 
 }

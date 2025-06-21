@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d130faf65600d44609a7aae03273b91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBossEnemy: 0
+  bossFightNumber: 0
 --- !u!1001 &1402017329014285050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +113,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5609460813755377545, guid: 6e7a4ecd5465a4d279aa7d02209ed22a, type: 3}
+      propertyPath: bulletsSpool
+      value: 
+      objectReference: {fileID: 862501625079232846}
     - target: {fileID: 5609460813755377545, guid: 6e7a4ecd5465a4d279aa7d02209ed22a, type: 3}
       propertyPath: bulletsFireRate
       value: 70

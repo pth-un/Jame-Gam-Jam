@@ -25,6 +25,7 @@ public class ComplexEnemy : Enemy
         {
             case State.MoveStraight:
                 transform.position += transform.forward * moveSpeed * Time.deltaTime;
+                if(shootingAllowed) Shoot();
                 if (Vector3.Distance(transform.position, PlayerInputHandler.Instance.transform.position) <= minDistToPlayer)
                 {
                     currentState = State.MoveTowardsPlayer;

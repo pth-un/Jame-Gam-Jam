@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,6 +8,9 @@ public class BulletsSpool : MonoBehaviour
 {
     [SerializeField] private int spawnBulletCount;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private bool isPlayerSpool;
+
 
     private List<GameObject> bulletProjectiles;
     private int disabledBullets;
@@ -17,6 +22,7 @@ public class BulletsSpool : MonoBehaviour
 
     private void Start()
     {
+        if(isPlayerSpool) enemySpawner.onWaveDestroyed += ResetAllBullets;
         SpawnBullets();
     }
 
@@ -80,4 +86,14 @@ public class BulletsSpool : MonoBehaviour
             disabledBullets++;
         }
     }
+
+    private void ResetAllBullets(object sender, EventArgs e)
+    {
+        var activeBullets = bulletProjectiles.Where(bullet => bullet.activeSelf).ToList();
+        foreach (GameObject bullet in activeBullets)
+        {
+            ResetBullet(bullet);
+        }
+    }
+
 }

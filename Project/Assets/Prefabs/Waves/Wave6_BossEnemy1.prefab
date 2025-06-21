@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d130faf65600d44609a7aae03273b91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBossEnemy: 1
+  bossFightNumber: 1
 --- !u!1001 &5413387588000008238
 PrefabInstance:
   m_ObjectHideFlags: 0

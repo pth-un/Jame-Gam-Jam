@@ -7,6 +7,9 @@ public class WaveScript : MonoBehaviour
 {
     public event EventHandler onWaveFinished;
 
+    public bool isBossEnemy;
+    public int bossFightNumber;
+
     private List<Enemy> listOfEnemies;
 
     private void Start()
