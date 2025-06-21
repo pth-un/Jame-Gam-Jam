@@ -64,7 +64,6 @@ public abstract class Enemy : MonoBehaviour, IDamageable
 
     public void Die(bool spawnHeal=true)
     {
-        Debug.Log("Instantiate pcb heal");
         SoundManager.Instance.PlaySoundClipFromArray(onDieClip, transform.position);
         ParticleSystemManager.Instance.SpawnParticles(onDestroyEffect, transform.position, transform.rotation);
         GetComponentInParent<WaveScript>().OnEnemyDie(this);

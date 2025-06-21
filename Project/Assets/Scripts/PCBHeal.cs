@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class PCBHeal : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
+    [SerializeField] private float force=70f;
     [SerializeField] private float heal;
-    
-    private void Update()
+
+    private Rigidbody rb;
+
+    private void Start()
     {
-        transform.position += transform.forward * moveSpeed * Time.deltaTime;
+        Debug.Log("Here");
+        rb = GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * force, ForceMode.Impulse);
     }
 
     private void OnCollisionEnter(Collision collision)

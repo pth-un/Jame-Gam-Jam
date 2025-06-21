@@ -11,5 +11,9 @@ public class EnemyDestroyer : MonoBehaviour
             enemy.Die(spawnHeal: false);
             GameManager.Instance.EnemyMissed();
         }
+        else
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
