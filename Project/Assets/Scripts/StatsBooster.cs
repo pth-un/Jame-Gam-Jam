@@ -22,8 +22,7 @@ public class StatsBooster : MonoBehaviour
 {
     public BoostStats[] boostStats;
 
-    [SerializeField] private Transform statsUpdateParent;
-    [SerializeField] private TextMeshProUGUI statsUpdate;
+    
 
     private void Start()
     {
@@ -36,17 +35,10 @@ public class StatsBooster : MonoBehaviour
         {
             if (boostStat.boostStatsAfterWave == e.WavesDestroyed)
             {
-                UpdateStatsGUI(boostStat.statBoostedText);
+                GameManager.Instance.UpdateStatsGUI("stats upgraded- \n" + boostStat.statBoostedText);
                 boostStat.boostStatsEvent?.Invoke(boostStat.boostStatValue);
             }
         }
-    }
-
-    private void UpdateStatsGUI(string _statBoostedText)
-    {
-        TextMeshProUGUI statsUpdateInst = Instantiate(statsUpdate, statsUpdateParent);
-        statsUpdateInst.text = "Stats Upgraded -\n" + _statBoostedText;
-        Destroy(statsUpdateInst.gameObject, 2.5f);
     }
 }
 

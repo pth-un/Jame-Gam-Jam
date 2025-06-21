@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -20,24 +21,31 @@ public class Gun : MonoBehaviour
     [SerializeField] private float shakeIntensity, shakeTime;
     [SerializeField] private BulletsSpool bulletsSpool;
 
-
+    private List<Transform> currentGunShootPos;
     private PlayerInputHandler playerInputHandler;
     private float shootTimer;
     private float playerMagazine;
     private bool canShoot;
     private float fireRate;
     private bool reloading;
+    private int gunShootPosNumber = 2;
 
     private void Awake()
     {
         if (PlayerGun == null) PlayerGun = this;
+        currentGunShootPos = new List<Transform>();
     }
 
     private void Start()
     {
+        
         fireRate = 60 / bulletsFireRate;
         if (isPlayerGun)
         {
+            for (int i = 0; i < gunShootPosNumber; i++)
+            {
+                currentGunShootPos.Add(gunShootPositions[i]);
+            }
             playerInputHandler = PlayerInputHandler.Instance;
             playerInputHandler.OnReloadEvent += ReloadFromInput;
             if (PlayerGun == null) PlayerGun = this;
@@ -69,7 +77,7 @@ public class Gun : MonoBehaviour
         {
             if (canShoot && playerInputHandler.CheckFiring())
             {
-                foreach (Transform gunShootPos in gunShootPositions)
+                foreach (Transform gunShootPos in currentGunShootPos)
                 {
                     playerMagazine--;
                     if (playerMagazine > 0)
@@ -151,5 +159,14 @@ public class Gun : MonoBehaviour
     public void ReduceReloadTime(float reduceReloadTime)
     {
         reloadTime -= reduceReloadTime;
+    }
+
+    public void AddGunShootPos(float addGunShootPos)
+    {
+        gunShootPosNumber += Mathf.RoundToInt(addGunShootPos);
+        for (int i = 0; i < gunShootPosNumber; i++)
+        {
+            currentGunShootPos.Add(gunShootPositions[i]);
+        }
     }
 }

@@ -4,7 +4,7 @@ public class PCBHeal : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private float heal;
-
+    
     private void Update()
     {
         transform.position += transform.forward * moveSpeed * Time.deltaTime;

@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         health = maxHealth;
     }
 
-    public void Die(bool spawnHeal=false)
+    public void Die(bool spawnHeal = false)
     {
         Debug.Log("Dead");
     }
@@ -57,6 +57,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void BoostMaxHealth(float boostStatValue)
     {
         maxHealth += boostStatValue;
-        Debug.Log(maxHealth);
+    }
+
+    public void ResetPlayerHealth()
+    {
+        health = maxHealth;
     }
 }

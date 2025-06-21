@@ -46,4 +46,9 @@ public class CinemachineShake : MonoBehaviour
         cinemachineCamera.GetComponent<CinemachineBasicMultiChannelPerlin>().AmplitudeGain = e.intensity;
         timer = e.shakeTime;
     }
+
+    public void SetCameraShake(float camShakeAmp)
+    {
+        cinemachineCamera.GetComponent<CinemachineBasicMultiChannelPerlin>().AmplitudeGain = camShakeAmp;
+    }
 }

@@ -323,8 +323,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletsFireRate: 150
   gunShootPositions:
-  - {fileID: 140141150}
   - {fileID: 684724167}
+  - {fileID: 140141150}
+  - {fileID: 1045034591}
+  - {fileID: 1305295094}
   gunShootAudionClips:
   - {fileID: 8300000, guid: 3d391460f2d8a41eb900ac34c552c3b5, type: 3}
   - {fileID: 8300000, guid: db26c299c883d44dfb2214439ac017a1, type: 3}
@@ -6551,6 +6553,8 @@ Transform:
   m_Children:
   - {fileID: 684724167}
   - {fileID: 140141150}
+  - {fileID: 1045034591}
+  - {fileID: 1305295094}
   - {fileID: 183690073}
   - {fileID: 273199347}
   - {fileID: 830758637}
@@ -11890,6 +11894,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1045034590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045034591}
+  m_Layer: 6
+  m_Name: GunHoldPos (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1045034591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045034590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.81, y: -0.75, z: 3.87}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 733500532}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1139012674
 GameObject:
   m_ObjectHideFlags: 0
@@ -12134,6 +12169,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1305295093
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305295094}
+  m_Layer: 6
+  m_Name: GunHoldPos (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305295094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305295093}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.8, y: -0.75, z: 3.87}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 733500532}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1357038684
 GameObject:
   m_ObjectHideFlags: 0
@@ -12280,6 +12346,11 @@ MonoBehaviour:
   - {fileID: 7534265377819839990, guid: 680e34c7c7ee94dd99860fd5c394701a, type: 3}
   - {fileID: 9045595003949408265, guid: 94bd20e2bf45a440689278d119e692ac, type: 3}
   - {fileID: 2924453484484812763, guid: 49422db3478804418a1a58a16fdbe4b8, type: 3}
+  - {fileID: 2924453484484812763, guid: 150d17080a87c49fa9b23ac02cd534d4, type: 3}
+  - {fileID: 2924453484484812763, guid: d645a8f75f8d3400d93328a6d1964207, type: 3}
+  - {fileID: 2924453484484812763, guid: eef1dd4c4ae8149799f562072e3ae818, type: 3}
+  - {fileID: 2924453484484812763, guid: a75de63b3d7714e22af4cd1256805f5c, type: 3}
+  - {fileID: 2924453484484812763, guid: 7f45fa0da3f0e4579831d10ff1d2ba99, type: 3}
   timelineAsset: {fileID: 2061179077}
   spawnPosition: {fileID: 1495774749}
   wavesText: {fileID: 1139012676}
@@ -12577,6 +12648,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c20d9aa16e4c5498e8ff69b944bf2d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statsUpdateParent: {fileID: 1683213240}
+  statsUpdateTxt: {fileID: 6475926850031825735, guid: e1825167560ba4b0ead5997f8771e83e, type: 3}
 --- !u!1 &1855798858
 GameObject:
   m_ObjectHideFlags: 0
@@ -12884,7 +12957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boostStats:
-  - boostStatsAfterWave: 2
+  - boostStatsAfterWave: 1
     boostStatsEvent:
       m_PersistentCalls:
         m_Calls:
@@ -12902,7 +12975,7 @@ MonoBehaviour:
           m_CallState: 2
     boostStatValue: 20
     statBoostedText: boosted maximum health 20
-  - boostStatsAfterWave: 3
+  - boostStatsAfterWave: 2
     boostStatsEvent:
       m_PersistentCalls:
         m_Calls:
@@ -12920,7 +12993,7 @@ MonoBehaviour:
           m_CallState: 2
     boostStatValue: 15
     statBoostedText: boosted magazine size 15
-  - boostStatsAfterWave: 4
+  - boostStatsAfterWave: 3
     boostStatsEvent:
       m_PersistentCalls:
         m_Calls:
@@ -12938,7 +13011,7 @@ MonoBehaviour:
           m_CallState: 2
     boostStatValue: 30
     statBoostedText: boosted fire rate 30
-  - boostStatsAfterWave: 4
+  - boostStatsAfterWave: 5
     boostStatsEvent:
       m_PersistentCalls:
         m_Calls:
@@ -12956,8 +13029,96 @@ MonoBehaviour:
           m_CallState: 2
     boostStatValue: 0.3
     statBoostedText: reduced reload time 0.3
-  statsUpdateParent: {fileID: 1683213240}
-  statsUpdate: {fileID: 6475926850031825735, guid: e1825167560ba4b0ead5997f8771e83e, type: 3}
+  - boostStatsAfterWave: 6
+    boostStatsEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 183690074}
+          m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+          m_MethodName: AddGunShootPos
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 10
+            m_FloatArgument: 2
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    boostStatValue: 2
+    statBoostedText: added 2 gun postions
+  - boostStatsAfterWave: 7
+    boostStatsEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 733500536}
+          m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+          m_MethodName: BoostMaxHealth
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 10
+            m_FloatArgument: 30
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    boostStatValue: 30
+    statBoostedText: boost max health 2
+  - boostStatsAfterWave: 8
+    boostStatsEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 183690074}
+          m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+          m_MethodName: AddFireRate
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 30
+            m_FloatArgument: 30
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    boostStatValue: 30
+    statBoostedText: boost fire rate 30
+  - boostStatsAfterWave: 9
+    boostStatsEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 183690074}
+          m_TargetAssemblyTypeName: Gun, Assembly-CSharp
+          m_MethodName: AddMagazine
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 20
+            m_FloatArgument: 30
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    boostStatValue: 20
+    statBoostedText: add magazine size 20
+  - boostStatsAfterWave: 10
+    boostStatsEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 733500531}
+          m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+          m_MethodName: IncreasePlayerSpeed
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 20
+            m_FloatArgument: 30
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    boostStatValue: 30
+    statBoostedText: movement speed increased 30
 --- !u!4 &2020959113
 Transform:
   m_ObjectHideFlags: 0

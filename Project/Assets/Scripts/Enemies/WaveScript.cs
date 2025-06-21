@@ -9,6 +9,7 @@ public class WaveScript : MonoBehaviour
 
     public bool isBossEnemy;
     public int bossFightNumber;
+    public float cameraShakeIntensity = 0.4f;
 
     private List<Enemy> listOfEnemies;
 
@@ -16,6 +17,7 @@ public class WaveScript : MonoBehaviour
     {
         listOfEnemies = new List<Enemy>();
         listOfEnemies = GetComponentsInChildren<Enemy>().ToList<Enemy>();
+        CinemachineShake.Instance.SetCameraShake(cameraShakeIntensity);
     }
 
     public void OnEnemyDie(Enemy enemy)

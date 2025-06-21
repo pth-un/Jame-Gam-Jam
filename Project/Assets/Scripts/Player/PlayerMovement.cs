@@ -25,5 +25,12 @@ public class PlayerMovement : MonoBehaviour
         //rb.AddForce(movementForce, ForceMode.Force);
 
         rb.linearVelocity = movementForce;
+
+
+    }
+
+    public void IncreasePlayerSpeed(float speedIncrease)
+    {
+        playerSpeed += speedIncrease;
     }
 }

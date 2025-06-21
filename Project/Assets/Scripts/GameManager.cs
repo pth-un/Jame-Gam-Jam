@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
         public int EnemiesMissed { get; set; }
     }
 
+    [SerializeField] private Transform statsUpdateParent;
+    [SerializeField] private TextMeshProUGUI statsUpdateTxt;
+    
+
     private int enemiesMissed = 0;
     private int wavesDestroyed = 0;
     private int currentWave = 1;
@@ -53,6 +57,18 @@ public class GameManager : MonoBehaviour
     {
         enemiesMissed++;
         EnemyMissed_Event?.Invoke(this, new EnemyMissed_EventArgs { EnemiesMissed = enemiesMissed });
+    }
 
+    public void BossEnemyDestroyed()
+    {
+        PlayerHealth.Instance.ResetPlayerHealth();
+        UpdateStatsGUI("Boss Enemy Destroyed");
+    }
+
+    public void UpdateStatsGUI(string updateNotifTxt)
+    {
+        TextMeshProUGUI statsUpdateInst = Instantiate(statsUpdateTxt, statsUpdateParent);
+        statsUpdateInst.text = updateNotifTxt;
+        Destroy(statsUpdateInst.gameObject, 2.5f);
     }
 }

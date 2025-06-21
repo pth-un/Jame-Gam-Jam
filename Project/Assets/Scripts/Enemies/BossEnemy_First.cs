@@ -37,7 +37,12 @@ public class BossEnemy_First : Enemy
 
     private void SetRandomPos()
     {
-        float randX =  Random.Range(-70, 70);
+        float randX = Random.Range(-70, 70);
         randPos = new Vector3(randX, startPosY, startPosZ);
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.BossEnemyDestroyed();
     }
 }
