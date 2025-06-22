@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerHealth : MonoBehaviour, IDamageable
@@ -26,6 +27,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void Die(bool spawnHeal = false)
     {
         Debug.Log("Dead");
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void Heal(float heal)
