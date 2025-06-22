@@ -528,7 +528,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -44, y: -44}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &602444106
 MonoBehaviour:
@@ -552,8 +552,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c8a6e102bd0174418ba2d1a4c8e30982, type: 2}
+  m_sharedMaterial: {fileID: -7469368175335420173, guid: c8a6e102bd0174418ba2d1a4c8e30982, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -577,8 +577,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 25.99
+  m_fontSizeBase: 25.99
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 4ffb607c1b6030c4a9041e0a36200a31, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -696,7 +696,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 2
 --- !u!222 &802957325
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -826,10 +826,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac5e7886b376334a8f0a1433d3410f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 602444106}
+  textField: {fileID: 602444106}
   dialogueBox: {fileID: 1708531935}
   rightImage: {fileID: 1853142032}
   leftImage: {fileID: 175775914}
+  textSpeed: 0.1
+  test: {fileID: 11400000, guid: 4596dd25fed6fcc4ab787f00dd4a67e9, type: 2}
 --- !u!4 &1245533593
 Transform:
   m_ObjectHideFlags: 0
@@ -860,7 +862,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1708531936
 RectTransform:
   m_ObjectHideFlags: 0

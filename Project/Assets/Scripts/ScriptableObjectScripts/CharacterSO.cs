@@ -5,4 +5,6 @@ public class CharacterSO : ScriptableObject
 {
     public string charName;
     public List<Texture2D> ExpresionList;
+
+    public List<AudioClip> speachClips;
 }
